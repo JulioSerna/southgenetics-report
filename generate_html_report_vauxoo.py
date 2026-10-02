@@ -38,7 +38,10 @@ archived.sort(key=lambda x: x['code'])
 
 unified_new_codes = {u['new_code'] for u in unified}
 
-total_odoo_accounts = 331
+with open('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/current_accounts_es_ar.json') as f:
+    acc_file_data = json.load(f)
+total_odoo_accounts = len(acc_file_data.get('records', acc_file_data.get('result', [])))
+
 total_rules_loaded = sum(pl['loaded'] for pl in price_lists)
 total_rules_excel = sum(pl['loaded'] + pl['pending'] for pl in price_lists)
 total_pl_coverage = round(total_rules_loaded / total_rules_excel * 100, 1) if total_rules_excel else 0
