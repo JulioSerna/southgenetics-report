@@ -226,101 +226,26 @@
       </div>
     </div>
 
-    <!-- Bloque Destacado de Resolución: Cuentas Técnicas vs Cuentas Bancarias -->
-    <div class="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-6 border-l-4 border-l-[#AC0340] space-y-4">
+    <!-- Bloque de Homologación de Cuentas -->
+    <div class="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-6 border-l-4 border-l-[#AC0340]">
       <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         <div class="space-y-2">
           <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#DCEFFE] text-[#455A64] text-xs font-bold">
-            CASO ESPECIAL RESUELTO &bull; CUENTAS BANCARIAS Y CUENTAS TÉCNICAS DE ODOO
+            CRITERIO DE UNIFICACIÓN APLICADO
           </div>
           <h2 class="text-xl font-bold text-[#282C2F] font-heading">
-            Resolución de Cuentas de Banco (BBVA) y Cuentas de Tránsito de Odoo (102.01.01, 102.01.02, 102.01.03)
+            Homologación de Cuentas Preexistentes y Preservación de Historial
           </h2>
           <p class="text-sm text-[#455A64] max-w-4xl leading-relaxed">
-            Durante la auditoría de la cuenta <span class="font-mono bg-[#F5F5F5] text-[#AC0340] px-1.5 py-0.5 rounded font-semibold">102.01.03</span> (ID <span class="font-mono font-bold text-[#282C2F]">12851</span>), identificamos que Odoo al instalar la localización mexicana genera automáticamente cuentas técnicas puente para cobros y pagos:
-            <span class="font-semibold text-[#282C2F]">12850</span> (<span class="italic">Recibos pendientes</span>), 
-            <span class="font-semibold text-[#282C2F]">1841</span> (<span class="italic">Bank Suspense Account</span>) y 
-            <span class="font-semibold text-[#282C2F]">12851</span> (<span class="italic">Pagos pendientes</span>), las cuales ocupaban originalmente los primeros tres códigos del grupo (<span class="font-mono">102.01.01</span>, <span class="font-mono">102.01.02</span> y <span class="font-mono">102.01.03</span>).
-          </p>
-          <p class="text-sm text-[#455A64] max-w-4xl leading-relaxed">
-            Por esa razón, las cuentas bancarias <strong>reales</strong> de SouthGenetics que contenían los <strong>3,121 apuntes contables históricos</strong> habían quedado registradas bajo subcuentas con sufijos (<span class="font-mono">102.01.001</span>, <span class="font-mono">102.01.002</span> y <span class="font-mono">102.01.401</span>).
+            Se aplicó la regla de unificación contable solicitada: cuando una cuenta preexistente en Odoo con pólizas contables registradas coincidía en nombre o función con el nuevo catálogo (por ejemplo, <span class="font-mono bg-[#F5F5F5] text-[#AC0340] px-1.5 py-0.5 rounded font-semibold">304.01.500 Resultado 2020</span> frente a la clave del Excel <span class="font-mono bg-[#F5F5F5] text-[#AC0340] px-1.5 py-0.5 rounded font-semibold">304.01.02 Resultado 2020</span>, o las cuentas bancarias reales de BBVA con movimientos), <strong>se actualizó directamente el registro existente</strong> con el código oficial de 3 niveles del SAT. Esto garantizó que el 100% de los apuntes contables (<span class="font-mono">account.move.line</span>) permanezcan intactos sin alterar saldos ni violar la integridad fiscal.
           </p>
         </div>
-        <div class="bg-[#F5F5F5] p-4 rounded border border-[#E0E0E0] text-center min-w-[230px]">
-          <div class="text-3xl font-extrabold text-[#AC0340] font-heading">3,121</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-[#455A64] mt-1">Apuntes en Bancos BBVA</div>
-          <div class="text-xs text-[#282C2F] font-bold mt-1.5">100% Blindados e Integrados</div>
+        <div class="bg-[#F5F5F5] p-4 rounded border border-[#E0E0E0] text-center min-w-[210px]">
+          <div class="text-3xl font-extrabold text-[#282C2F] font-heading">331</div>
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-[#455A64] mt-1">Cuentas Totales en Odoo</div>
+          <div class="text-xs text-[#AC0340] font-bold mt-1.5">0 pólizas huérfanas</div>
         </div>
       </div>
-
-      <!-- Tabla de Solución Bancaria -->
-      <div class="overflow-x-auto pt-2">
-        <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-          <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
-            <tr>
-              <th class="py-2 px-3 text-left">Función / Banco</th>
-              <th class="py-2 px-3 text-left">ID Odoo</th>
-              <th class="py-2 px-3 text-left">Código Anterior</th>
-              <th class="py-2 px-3 text-left font-bold text-[#AC0340]">Nuevo Código Asignado</th>
-              <th class="py-2 px-3 text-center">Pólizas</th>
-              <th class="py-2 px-3 text-left">Estatus y Destino</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-[#E0E0E0] text-[#282C2F]">
-            <tr class="hover:bg-[#F5F5F5]/60 bg-green-50/20">
-              <td class="py-2 px-3 font-semibold text-[#282C2F]">Bbva Bancomer 6674 (Cuenta Real)</td>
-              <td class="py-2 px-3 font-mono text-slate-500">3525</td>
-              <td class="py-2 px-3 font-mono text-[#455A64]">102.01.001</td>
-              <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.01</td>
-              <td class="py-2 px-3 text-center font-bold">1,342</td>
-              <td class="py-2 px-3 text-green-700 font-semibold">&check; Oficial Excel &bull; Vinculada a Diario BBVA 6674</td>
-            </tr>
-            <tr class="hover:bg-[#F5F5F5]/60 bg-green-50/20">
-              <td class="py-2 px-3 font-semibold text-[#282C2F]">Bbva Bancomer 3786 (Cuenta Real)</td>
-              <td class="py-2 px-3 font-mono text-slate-500">1839</td>
-              <td class="py-2 px-3 font-mono text-[#455A64]">102.01.002</td>
-              <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.02</td>
-              <td class="py-2 px-3 text-center font-bold">1,732</td>
-              <td class="py-2 px-3 text-green-700 font-semibold">&check; Oficial Excel &bull; Vinculada a Diario BBVA 3786</td>
-            </tr>
-            <tr class="hover:bg-[#F5F5F5]/60 bg-green-50/20">
-              <td class="py-2 px-3 font-semibold text-[#282C2F]">Bbva Bancomer US$ (Cuenta Real)</td>
-              <td class="py-2 px-3 font-mono text-slate-500">3526</td>
-              <td class="py-2 px-3 font-mono text-[#455A64]">102.01.401</td>
-              <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.03</td>
-              <td class="py-2 px-3 text-center font-bold">47</td>
-              <td class="py-2 px-3 text-green-700 font-semibold">&check; Oficial Excel &bull; Vinculada a Diario BBVA US$</td>
-            </tr>
-            <tr class="hover:bg-[#F5F5F5]/60">
-              <td class="py-2 px-3 font-medium text-[#455A64]">Cuenta transitoria de banco (Suspense)</td>
-              <td class="py-2 px-3 font-mono text-slate-500">1841</td>
-              <td class="py-2 px-3 font-mono text-[#455A64]">102.01.02</td>
-              <td class="py-2 px-3 font-mono font-bold text-[#455A64]">102.01.97</td>
-              <td class="py-2 px-3 text-center font-bold">3,111</td>
-              <td class="py-2 px-3 text-[#455A64]">Reubicada a rango técnico auxiliar &bull; Preserva extractos</td>
-            </tr>
-            <tr class="hover:bg-[#F5F5F5]/60">
-              <td class="py-2 px-3 font-medium text-[#455A64]">Recibos pendientes (Tránsito Cobros)</td>
-              <td class="py-2 px-3 font-mono text-slate-500">12850</td>
-              <td class="py-2 px-3 font-mono text-[#455A64]">102.01.01</td>
-              <td class="py-2 px-3 font-mono font-bold text-[#455A64]">102.01.98</td>
-              <td class="py-2 px-3 text-center text-[#95999F]">0</td>
-              <td class="py-2 px-3 text-[#455A64]">Reubicada a rango técnico &bull; Configuración res.company activa</td>
-            </tr>
-            <tr class="hover:bg-[#F5F5F5]/60">
-              <td class="py-2 px-3 font-medium text-[#455A64]">Pagos pendientes (Tránsito Pagos)</td>
-              <td class="py-2 px-3 font-mono text-slate-500">12851</td>
-              <td class="py-2 px-3 font-mono text-[#455A64]">102.01.03</td>
-              <td class="py-2 px-3 font-mono font-bold text-[#455A64]">102.01.99</td>
-              <td class="py-2 px-3 text-center text-[#95999F]">0</td>
-              <td class="py-2 px-3 text-[#455A64]">Reubicada a rango técnico &bull; Configuración res.company activa</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="text-xs text-[#455A64] bg-[#F5F5F5] p-2.5 rounded border border-[#E0E0E0]">
-        <strong>Resultado:</strong> Las cuentas bancarias reales de SouthGenetics con 3,121 movimientos ahora coinciden <strong>100% con los códigos y nombres del Excel</strong> (<span class="font-mono text-[#AC0340]">102.01.01</span>, <span class="font-mono text-[#AC0340]">102.01.02</span> y <span class="font-mono text-[#AC0340]">102.01.03</span>), mientras que las cuentas técnicas de Odoo se mantienen operativas sin colisionar ni alterar la contabilidad. Adicionalmente, se unificaron <span class="font-mono text-[#AC0340]">113.02.01 ISR a favor</span> (ID 6593, 2 pólizas) y <span class="font-mono text-[#AC0340]">210.01.01 Provisión de sueldos y salarios</span> (ID 4715, 2 pólizas). El análisis total confirma <strong>0 discrepancias pendientes</strong> en todo el catálogo.
-      </p>
     </div>
 
     <!-- Navegación por Pestañas -->
@@ -1314,7 +1239,7 @@
           <div>
             <h3 class="text-base font-bold text-[#282C2F] font-heading">162 Cuentas Oficiales del Excel (Nivel 3 SAT)</h3>
             <p class="text-xs text-[#455A64]">
-              Cuentas vigentes del catálogo maestro de SouthGenetics presentes al 100% en Odoo.
+              Cuentas oficiales extraídas de la pestaña <span class="font-mono font-semibold">CATALOGO NIVEL 3</span> del archivo <span class="font-mono">Catalogo de cuentas SOUTH_ Odoo 2 niveles.xlsx</span>.
             </p>
           </div>
           <div>
@@ -1326,7 +1251,7 @@
           <table id="table-official" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
             <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0 z-10">
               <tr>
-                <th class="py-2.5 px-3 text-left font-bold text-[#AC0340]">Código SAT 3 Niveles</th>
+                <th class="py-2.5 px-3 text-left font-bold text-[#AC0340]">Código Oficial</th>
                 <th class="py-2.5 px-3 text-left">Código Agrupador SAT</th>
                 <th class="py-2.5 px-3 text-left">Nombre de la Cuenta</th>
                 <th class="py-2.5 px-3 text-center">Estatus en Odoo</th>
@@ -1338,1458 +1263,1134 @@
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">102.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Bbva Bancomer 6674</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">102.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Bbva Bancomer 3786</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">102.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Bbva Bancomer US$</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">102.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">American Express</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">102.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Open pay</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">102.01.06</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">102.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Edenred</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">103.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">103.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Inverisones temporales BBVA</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">105.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">105.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Clientes nacionales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">105.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">105.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Clientes extranjeros parte relacionada</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">107.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">107.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Funcionarios y empleados</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">107.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">107.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Deudores Div Partes relacionadas extranjeros</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">107.05.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">107.05</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros deudores diversos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">109.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">109.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Seguros pagados por anticipado nacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">109.01.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">109.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Fianzas pagados por anticipado nacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">113.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">113.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">IVA a favor</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">113.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">113.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">ISR a favor</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">113.08.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">113.08</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros impuestos a favor</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">114.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">114.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Pagos provisionales de ISR</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">118.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">118.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">IVA acreditable pagado</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">119.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">119.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">IVA pendiente de pago</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">120.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">120.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Anticipo a proveedores nacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">155.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">155.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Mob y Equipo de oficina</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">156.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">156.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Equipo de cómputo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">171.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">171.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depreciacion Acum Mob y Equipo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">171.05.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">171.05</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depreciación acumulada de equipo de cómputo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">184.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">184.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depósitos de arrendamiento de bienes inmuebles</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">201.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">201.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Proveedores nacionales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">201.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">201.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Proveedores extranjeros</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">201.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">201.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Proveedores extranjeros parte relacionada</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">205.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">205.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Acreedores diversos a corto plazo nacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">205.06.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">205.06</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros acreedores diversos a corto plazo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">208.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">208.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">IVA trasladado cobrado</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">209.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">209.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">IVA trasladado no cobrado</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">210.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">210.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de sueldos y salarios por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">210.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">210.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de vacaciones por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">210.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">210.03</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de aguinaldo por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">210.05.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">210.05</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de asimilados a salarios por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">211.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">211.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de IMSS patronal por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">211.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">211.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de SAR por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">211.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">211.03.</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de infonavit por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">212.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">212.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Provisión de impuesto estatal sobre nómina por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">213.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">213.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">IVA por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">213.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">213.03</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">ISR por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">215.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">215.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">PTU por pagar</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">215.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">215.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">PTU por pagar de ejercicios anteriores</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">216.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">216.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuestos retenidos de ISR por sueldos y salarios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">216.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">216.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuestos retenidos de ISR por asimilados a salarios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">216.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">216.03</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuestos retenidos de ISR por arrendamiento</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">216.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">216.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuestos retenidos de ISR por servicios profesionales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">216.10.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">216.1</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuestos retenidos de IVA</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">216.12.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">216.12</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otras impuestos retenidos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">301.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">301.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Capital fijo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">301.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">301.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Capital variable</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">301.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">301.03</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aportaciones para futuros aumentos de capital</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">303.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">303.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Reserva legal</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2016</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.01.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2020</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.01.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2021</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.01.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2022</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.01.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2024</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.01.06</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2025</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2015</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.02.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2019</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">304.02.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">304.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Resultado 2023</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Oncología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros test</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Dev Otros test</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Urología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Dev Urología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Endocrinología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Dev Endocrinología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Hematología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Dev Hematología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.06</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Prenatales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.01.06</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Dev Prenatales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.15.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.15</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Ventas y/o servicios gravados a la tasa general extranjeros partes relacionadas</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">401.16.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">401.16</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros ingresos propios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">402.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Dev Oncología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">402.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">402.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Devoluciones descuentos o bonificaciones de otros ingresos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Oncología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Otros test</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Urología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Endocrinología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Hematología</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.06</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Prenatales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.07</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gastos de Laboratorio</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">504.25.08</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">504.25</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Costo Mensajeria</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Sueldos y salarios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.06.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.06</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Vacaciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.07.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.07</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Prima vacacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.12.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.12</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aguinaldo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.13.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.13</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Indemnizaciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.26.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.26</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Cuotas al IMSS</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.27.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.27</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aportaciones al infonavit</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.28.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.28</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aportaciones al SAR</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.29.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.29</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuesto estatal sobre nóminas</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.31.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.31</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Asimilados a salarios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.34.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.34</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Servicios contables</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.34.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.34</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Servicios administrativos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.34.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.34</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Servicios legales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.38.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.38</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Servicios contables</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.38.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.38</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Servicios administrativos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.38.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.38</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Servicios legales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.45.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.45</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Renta</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.55.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.55</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Papeleria y Artículos de oficina</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.56.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.56</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Mantenimiento</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.59.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.59</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Recargos fiscales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.60.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.6</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Cuotas y suscripciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.63.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.63</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Donativos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.83.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.83</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gastos sin comprobante fiscal - caja chica</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.83.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.83</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gastos no deducibles por proporcion fiscal</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.84.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">601.84</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros Gastos Generales</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.98.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">614.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Amortizacion seguros</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.99.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">613.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depreciación de mobiliario y equipo de oficina</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">601.99.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">613.05</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depreciación de equipo de cómputo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Sueldos y salarios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.06.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.06</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Vacaciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.07.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.07</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Prima vacacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.10.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.1</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gratificaciones - Comisiones por Venta</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.12.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.12</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aguinaldo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.13.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.13</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Indemnizaciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.26.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.26</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Cuotas al IMSS</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.27.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.27</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aportaciones al Infonavit</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.28.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.28</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Aportaciones al SAR</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.29.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.29</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuesto estatal sobre nóminas</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.31.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.31</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Asimilados a salarios</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.34.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.34</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Honorarios servicios medicos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.34.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.34</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Honorarios comisionistas externos - rep ventas</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.34.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.34</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Honorarios capacitación PF</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.38.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.38</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Honorarios servicios medicos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.38.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.38</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Honorarios capacitación PM</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.48.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.48</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Combustibles y lubricantes</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.49.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.49</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Alimentos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.49.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.49</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Hospedaje</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.49.03</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.49</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Transporte</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.49.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.49</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Consumos - reuniones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.50.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.5</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Teléfono internet</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.55.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.55</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Papelería y artículos de oficina</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.57.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.57</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Seguros y fianzas</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.58.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.58</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros impuestos y derechos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.60.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.6</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Suscripciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.60.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.6</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Congresos y convenciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.61.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.61</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Propaganda y publicidad</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.83.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.83</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gastos sin requisitos por viaticos</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.83.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.83</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gastos no deducibles por proporcion fiscal</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.84.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">602.84</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros gastos de venta</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.98.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">614.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Amortizacion seguros</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.99.04</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">613.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depreciación de mobiliario y equipo de oficina</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">602.99.05</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">613.05</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Depreciación de equipo de cómputo</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">607.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">607.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Participación de los trabajadores en las utilidades</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">610.10.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">610.1</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Gratificaciones</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">611.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">611.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Impuesto Sobre la renta</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">701.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">701.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Pérdida cambiaria</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">701.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">701.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Pérdida cambiaria nacional parte relacionada</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">701.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">701.03</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Pérdida cambiaria extranjero parte relacionada</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">701.10.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">701.1</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Comisiones bancarias Onco</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">701.10.02</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">701.1</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Comisiones bancarias South</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">702.01.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">702.01</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Utilidad cambiaria</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#AC0340]/10 text-[#AC0340] border border-[#AC0340]/20">Unificada (Con Histórico)</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">702.02.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">702.02</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Utilidad cambiaria nacional parte relacionada</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">702.03.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">702.03</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Utilidad cambiaria extranjero parte relacionada</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">702.04.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">702.04</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Intereses a favor bancarios nacional</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
               <tr class="hover:bg-[#F5F5F5]/60 transition">
                 <td class="py-2 px-3 font-mono font-bold text-[#AC0340]">702.10.01</td>
                 <td class="py-2 px-3 font-mono text-[#455A64]">702.1</td>
                 <td class="py-2 px-3 font-medium text-[#282C2F]">Otros productos financieros</td>
-                <td class="py-2 px-3 text-center">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#DCEFFE] text-[#455A64]">Activa en Odoo</span>
-                </td>
+                <td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#DCEFFE] text-[#455A64] border border-[#455A64]/20">Oficial Creada / Existente</span></td>
               </tr>
 
             </tbody>
