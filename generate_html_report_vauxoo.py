@@ -660,8 +660,4 @@ output_path = '/Users/julioserna/.gemini/antigravity/scratch/southgenetics/index
 with open(output_path, 'w', encoding='utf-8') as f:
     f.write(html_template)
 
-# Also update artifact
-with open('/Users/julioserna/.gemini/antigravity/brain/982f6e60-7ee3-4371-bb88-215f9ba01996/index.html', 'w', encoding='utf-8') as f:
-    f.write(html_template)
-
 print('Successfully re-generated index.html!')
