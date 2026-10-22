@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Genera el reporte oficial de Vauxoo con la estructura exacta previa de auditoría del Plan Contable,
-reflejando la depuración completada en el nuevo Staging (southgenetics-staging-2-40150710):
-- 171 Cuentas Activas visibles en Odoo (deprecated = False):
-    * 162 cuentas oficiales del Excel (84 creadas nuevas + 75 unificadas/homologadas + 3 preexistentes exactas)
-    * 9 cuentas técnicas que Odoo necesita (bancos suspense/transferencia, impuestos SAT, provisión laboratorio)
-- 57 Cuentas Obsoletas marcadas (deprecated = True).
-- 80 Cuentas Individuales Legacy (105.01.xxx / 201.01.xxx) ELIMINADAS de la base de datos.
-- Además incluye las pestañas de: Listas de Precios (286 reglas) & Costos (44 USD), Contactos (45 Prov / 19 Cli / 15 Asignaciones) y Activos Fijos (17 activos).
+Genera el reporte oficial de Vauxoo con la estructura completa de Auditoría Contable y Todos los Maestros:
+- Pestaña 1: Catálogo Drive (162: Origen por Cuenta)
+- Pestaña 2: Unificadas / Quedaron (78)
+- Pestaña 3: Cuentas Nuevas (84)
+- Pestaña 4: Técnicas que Quedan (9)
+- Pestaña 5: Eliminadas (80 CxC/CxP) y Obsoletas (57)
+- Pestaña 6: Activos Fijos (4 Modelos Contables + 17 Activos con Cuentas y Depreciación)
+- Pestaña 7: Listas de Precios (11 Listas / 286 Reglas MXN) y Costos Proveedor (44 USD)
+- Pestaña 8: Clientes (19), Proveedores (45) y Asignación de Listas (15)
 """
 
 import json
@@ -40,7 +41,6 @@ with open('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/new_stagi
 
 with open('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/new_staging_accounts_raw.json') as f:
     raw_accounts = json.load(f)['records']
-raw_by_id = {a['id']: a for a in raw_accounts}
 
 with open('/Users/julioserna/.gemini/antigravity/brain/9d6e2eb6-69a5-43c2-ada0-9735ea4b0993/.system_generated/steps/608/output.txt') as f:
     target_accs = json.load(f)['records']
@@ -60,7 +60,6 @@ with open('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/full_repo
 
 excel_accounts = data['excel_accounts']
 unified = data['unified']
-config_accounts = data['config_accounts']
 price_lists = data['price_lists']
 discrepancies = data['discrepancies']
 
@@ -140,7 +139,6 @@ for acc in active_accounts:
             'badge_cls': badge_cls,
         })
     elif aid in pre_exact_ids:
-        ex_info = excel_codes.get(code, {})
         unified_active.append({
             'id': aid,
             'code': code,
@@ -173,7 +171,16 @@ archived_accounts.sort(key=lambda x: x['code'])
 unified_by_code = {u['code']: u for u in unified_active}
 created_by_code = {c['code']: c for c in created_by_file}
 
-# Parse Contactos & Asignación & Activos Fijos & Costos
+# Load Live Fixed Assets and Asset Models from Odoo
+with open('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/new_staging_assets_clean.json') as f:
+    all_assets_odoo = json.load(f)['records']
+
+asset_models_odoo = [a for a in all_assets_odoo if a['state'] == 'model']
+fixed_assets_odoo = [a for a in all_assets_odoo if a['state'] != 'model']
+asset_models_odoo.sort(key=lambda x: x['id'])
+fixed_assets_odoo.sort(key=lambda x: x['id'])
+
+# Parse Contactos & Asignación & Costos
 wb_cp = openpyxl.load_workbook('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/CLIENTES_PROVEEDORES.xlsx', data_only=True)
 ws_prov = wb_cp['PROVEEDORES']
 prov_rows = []
@@ -184,8 +191,10 @@ for r in list(ws_prov.iter_rows(min_row=2, values_only=True)):
             'name': str(r[2]).strip(),
             'rfc': str(r[9]).strip() if r[9] else '—',
             'city': str(r[3]).strip() if r[3] else '—',
+            'street': str(r[10]).strip() if r[10] else '—',
             'cp': str(r[11]).strip() if r[11] else '—',
-            'regimen': reg.group(1) if reg else '—',
+            'regimen': str(r[12]).strip() if r[12] else '—',
+            'reg_code': reg.group(1) if reg else '—',
             'status': 'Sincronizado (CxP 201.01.01)'
         })
 
@@ -196,10 +205,13 @@ for r in list(ws_cli.iter_rows(min_row=2, values_only=True)):
         reg = re.match(r'^(\d{3})', str(r[13]).strip()) if r[13] else None
         cli_rows.append({
             'name': str(r[2]).strip(),
+            'subname': str(r[3]).strip() if r[3] else '—',
             'rfc': str(r[10]).strip() if r[10] else '—',
             'city': str(r[4]).strip() if r[4] else '—',
+            'street': str(r[11]).strip() if r[11] else '—',
             'cp': str(r[12]).strip() if r[12] else '—',
-            'regimen': reg.group(1) if reg else '—',
+            'regimen': str(r[13]).strip() if r[13] else '—',
+            'reg_code': reg.group(1) if reg else '—',
             'status': 'Sincronizado (CxC 105.01.01)'
         })
 
@@ -215,21 +227,6 @@ for r in list(ws_asig.iter_rows(min_row=2, values_only=True)):
             'status': 'Asignada en Company 13'
         })
 
-assets_rows = []
-with open("/Users/julioserna/.gemini/antigravity/scratch/southgenetics/06_Activos_Fijos_y_Depreciacion.csv", mode="r", encoding="latin1") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        if row.get("name") and row.get("original_value"):
-            assets_rows.append({
-                'name': html.unescape(row["name"].strip()),
-                'model': row["model_id"].strip(),
-                'acq_date': row["acquisition_date"].strip(),
-                'original': float(row["original_value"].replace(",", "").strip()),
-                'depreciated': float(row["already_depreciated_amount_import"].replace(",", "").strip()),
-                'residual': float(row["salvage_value"].replace(",", "").strip()),
-                'status': 'Borrador (Cuentas Oficiales)'
-            })
-
 with open('/Users/julioserna/.gemini/antigravity/scratch/southgenetics/supplierinfo_costos_payload.json') as f:
     supp_data = json.load(f)
 
@@ -238,7 +235,7 @@ html_template = f"""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informe de Auditoría y Catálogo Contable | SouthGenetics México</title>
+  <title>Informe de Auditoría Contable y Catálogos Maestros | SouthGenetics México</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Vauxoo Brand Self-Hosted Fonts (No Google Fonts CDN) */
@@ -350,16 +347,16 @@ html_template = f"""<!DOCTYPE html>
             <span>Localización Mexicana SAT</span>
           </div>
           <h2 class="text-2xl font-bold tracking-tight font-heading">
-            Catálogo Contable Activo y Depuración Definitiva (Cuenta por Cuenta)
+            Catálogo Contable Activo, Activos Fijos y Catálogos Maestros
           </h2>
           <p class="text-sm text-[#E0E0E0] mt-1 max-w-3xl">
-            Catálogo 100% depurado conforme al archivo del Drive: <strong>{len(active_accounts)} cuentas activas en Odoo</strong> (filtro <span class="font-mono text-[#E4A900]">deprecated = False</span>) compuestas únicamente por las <strong>162 cuentas oficiales del Drive</strong> ({len(created_by_file)} nuevas creadas + {len(unified_active)} preexistentes unificadas/conservadas) y las <strong>{len(remaining_technical)} cuentas técnicas que Odoo requiere</strong>. Se eliminaron las <strong>{len(deleted_legacy)} cuentas individuales de clientes/proveedores (105.01.xxx / 201.01.xxx)</strong> y las <strong>{len(archived_accounts)} cuentas restantes</strong> quedaron ocultas como obsoletas (<span class="font-mono">deprecated = True</span>).
+            Catálogo 100% depurado conforme al archivo del Drive: <strong>{len(active_accounts)} cuentas activas en Odoo</strong> ({len(created_by_file)} nuevas creadas + {len(unified_active)} preexistentes unificadas/conservadas + {len(remaining_technical)} técnicas), <strong>{len(deleted_legacy)} cuentas CxC/CxP individuales eliminadas</strong>, <strong>4 modelos y 17 activos fijos</strong>, <strong>11 listas de precios (286 reglas MXN)</strong>, <strong>44 costos de proveedor (USD)</strong> y <strong>64 contactos sincronizados (45 proveedores, 19 clientes y 15 asignaciones de lista)</strong>.
           </p>
         </div>
         <div class="text-left md:text-right text-xs text-[#E0E0E0] space-y-1">
           <p><strong class="text-[#FFFFFF]">Ambiente:</strong> southgenetics-staging-2-40150710</p>
           <p><strong class="text-[#FFFFFF]">Cuentas Activas:</strong> <span class="text-[#E4A900] font-bold">{len(active_accounts)} en Odoo (162 Drive + 9 Técnicas)</span></p>
-          <p><strong class="text-[#FFFFFF]">Cuentas CxC / CxP Borradas:</strong> <span class="text-[#008000] font-bold">{len(deleted_legacy)} Eliminadas</span></p>
+          <p><strong class="text-[#FFFFFF]">Activos Fijos:</strong> <span class="text-[#E4A900] font-bold">4 Modelos &bull; 17 Activos ($1.00 residual)</span></p>
           <p><strong class="text-[#FFFFFF]">Pólizas en Odoo:</strong> <span class="text-[#008000] font-bold">0 Pólizas (100% Depuradas)</span></p>
         </div>
       </div>
@@ -369,101 +366,91 @@ html_template = f"""<!DOCTYPE html>
   <!-- Contenido Principal -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-    <!-- KPI Grid Flat Cards -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
-      <div class="bg-[#FFFFFF] p-4 rounded border-2 border-[#AC0340]">
-        <p class="text-[11px] font-bold text-[#AC0340] uppercase tracking-wider">Cuentas Activas</p>
-        <p class="text-2xl font-bold text-[#AC0340] mt-1 font-heading">{len(active_accounts)}</p>
-        <p class="text-[11px] text-[#282C2F] font-semibold mt-1">162 Drive + 9 Técnicas</p>
+    <!-- KPI Grid Fila 1: Plan Contable -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+      <div class="bg-[#FFFFFF] p-3.5 rounded border-2 border-[#AC0340]">
+        <p class="text-[10px] font-bold text-[#AC0340] uppercase tracking-wider">Cuentas Activas</p>
+        <p class="text-xl font-bold text-[#AC0340] mt-1 font-heading">{len(active_accounts)}</p>
+        <p class="text-[10px] text-[#282C2F] font-semibold mt-0.5">162 Drive + 9 Téc.</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Cuentas Nuevas</p>
-        <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">{len(created_by_file)}</p>
-        <p class="text-[11px] text-[#008000] font-semibold mt-1">Creadas desde Drive</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Cuentas Nuevas</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">{len(created_by_file)}</p>
+        <p class="text-[10px] text-[#008000] font-semibold mt-0.5">Creadas por Archivo</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Unificadas / Quedaron</p>
-        <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">{len(unified_active)}</p>
-        <p class="text-[11px] text-[#455A64] font-semibold mt-1">75 Homologadas + 3 Iguales</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Unificadas</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">{len(unified_active)}</p>
+        <p class="text-[10px] text-[#455A64] font-semibold mt-0.5">75 Homol. + 3 Iguales</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Técnicas de Odoo</p>
-        <p class="text-2xl font-bold text-[#455A64] mt-1 font-heading">{len(remaining_technical)}</p>
-        <p class="text-[11px] text-[#455A64] mt-1">Bancos y Retenciones SAT</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Borradas / Obs.</p>
+        <p class="text-xl font-bold text-[#95999F] mt-1 font-heading">{len(deleted_legacy)} / {len(archived_accounts)}</p>
+        <p class="text-[10px] text-[#455A64] mt-0.5">80 CxC/CxP &bull; 57 Obs.</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Eliminadas / Obsoletas</p>
-        <p class="text-2xl font-bold text-[#95999F] mt-1 font-heading">{len(deleted_legacy)} / {len(archived_accounts)}</p>
-        <p class="text-[11px] text-[#455A64] mt-1">80 Borradas &bull; 57 Ocultas</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Activos Fijos</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">17 / 4</p>
+        <p class="text-[10px] text-[#008000] font-semibold mt-0.5">17 Activos &bull; 4 Modelos</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Listas & Contactos</p>
-        <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">{total_rules_loaded} / 64</p>
-        <p class="text-[11px] text-[#AC0340] font-bold mt-1">11 Listas &bull; 15 Asignadas</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Listas Precios</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">{total_rules_loaded}</p>
+        <p class="text-[10px] text-[#AC0340] font-bold mt-0.5">11 Listas MXN</p>
       </div>
-    </div>
 
-    <!-- Bloque de Homologación de Cuentas -->
-    <div class="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-6 border-l-4 border-l-[#AC0340]">
-      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-        <div class="space-y-2">
-          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#DCEFFE] text-[#455A64] text-xs font-bold">
-            AUDITORÍA DETALLADA DEL PLAN CONTABLE EN EL NUEVO STAGING
-          </div>
-          <h2 class="text-xl font-bold text-[#282C2F] font-heading">
-            ¿Qué cuentas quedaron después de la depuración? ({len(active_accounts)} Cuentas Activas)
-          </h2>
-          <p class="text-sm text-[#455A64] max-w-4xl leading-relaxed">
-            En la vista de cuentas activas de Odoo (<span class="font-mono bg-[#F5F5F5] text-[#AC0340] px-1 py-0.5 rounded font-semibold">deprecated = False</span>) quedaron únicamente:
-            <br>&bull; <strong>{len(created_by_file)} Cuentas Nuevas Creadas por Archivo:</strong> Cuentas del catálogo del Drive que no existían en Odoo y se dieron de alta.
-            <br>&bull; <strong>{len(unified_active)} Cuentas Preexistentes que se Quedaron / Unificaron:</strong> <strong>75 cuentas</strong> que ya existían en Odoo y se igualaron en código (a 3 niveles) y/o nombre al plan contable del Drive, más <strong>3 cuentas</strong> (<span class="font-mono">107.05.01</span>, <span class="font-mono">201.01.01</span>, <span class="font-mono">205.06.01</span>) que ya tenían exactamente el código y nombre del Drive. (Total = <strong>162 cuentas oficiales del Drive</strong>).
-            <br>&bull; <strong>{len(remaining_technical)} Cuentas Técnicas de Odoo:</strong> Cuentas requeridas por diarios bancarios BBVA (suspense/transferencia), impuestos SAT y provisión de laboratorios.
-            <br>&bull; <strong>{len(deleted_legacy)} Cuentas Individuales CxC/CxP Eliminadas (<span class="font-mono">unlink</span>):</strong> Todas las subcuentas individuales <span class="font-mono">105.01.xxx</span> y <span class="font-mono">201.01.xxx</span> fueron borradas tras apuntar <span class="font-mono">ir.property</span> a la única cuenta nacional <span class="font-mono">105.01.01 Clientes nacionales</span> y <span class="font-mono">201.01.01 Proveedores nacionales</span>.
-          </p>
-        </div>
-        <div class="bg-[#F5F5F5] p-4 rounded border border-[#E0E0E0] text-center min-w-[220px]">
-          <div class="text-3xl font-extrabold text-[#AC0340] font-heading">105.01.01</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-[#455A64] mt-1">Única CxC Clientes Nacionales</div>
-          <div class="text-xs text-[#008000] font-bold mt-1.5">80 individuales eliminadas</div>
-        </div>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Costos Prov.</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">44</p>
+        <p class="text-[10px] text-[#008000] font-semibold mt-0.5">USD (Secuencia 1)</p>
+      </div>
+
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Clientes / Prov.</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">19 / 45</p>
+        <p class="text-[10px] text-[#455A64] font-semibold mt-0.5">15 Listas Asignadas</p>
       </div>
     </div>
 
-    <!-- Navegación por Pestañas -->
-    <div class="border-b border-[#E0E0E0] no-print">
-      <nav class="-mb-px flex space-x-1 md:space-x-3 overflow-x-auto text-xs sm:text-sm font-semibold" id="tabs">
-        <button onclick="switchTab('tab-official')" id="btn-tab-official" class="tab-btn active py-3 px-3.5 border-b-2 font-bold text-[#AC0340] transition flex items-center gap-1.5 whitespace-nowrap">
+    <!-- Navegación por Pestañas (Todas las Pestañas de Plan Contable + Todos los Maestros) -->
+    <div class="border-b border-[#E0E0E0] no-print bg-[#FFFFFF] px-3 rounded-t border-t border-x">
+      <nav class="-mb-px flex flex-wrap gap-1 text-xs font-semibold" id="tabs">
+        <button onclick="switchTab('tab-official')" id="btn-tab-official" class="tab-btn active py-3 px-3 border-b-2 font-bold text-[#AC0340] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
-          Catálogo Drive (162: Origen por Cuenta)
+          1. Catálogo Drive (162)
         </button>
-        <button onclick="switchTab('tab-unified')" id="btn-tab-unified" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-unified')" id="btn-tab-unified" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Unificadas / Quedaron ({len(unified_active)})
+          2. Unificadas / Quedaron ({len(unified_active)})
         </button>
-        <button onclick="switchTab('tab-created')" id="btn-tab-created" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-created')" id="btn-tab-created" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Cuentas Nuevas ({len(created_by_file)})
+          3. Cuentas Nuevas ({len(created_by_file)})
         </button>
-        <button onclick="switchTab('tab-technical')" id="btn-tab-technical" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-technical')" id="btn-tab-technical" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Técnicas que Quedan ({len(remaining_technical)})
+          4. Técnicas Odoo ({len(remaining_technical)})
         </button>
-        <button onclick="switchTab('tab-deleted-archived')" id="btn-tab-deleted-archived" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-deleted-archived')" id="btn-tab-deleted-archived" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#95999F]"></span>
-          Eliminadas ({len(deleted_legacy)}) y Obsoletas ({len(archived_accounts)})
+          5. Eliminadas ({len(deleted_legacy)}) y Obsoletas ({len(archived_accounts)})
         </button>
-        <button onclick="switchTab('tab-pricelists')" id="btn-tab-pricelists" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Listas ({total_rules_loaded}) y Costos (44)
+        <button onclick="switchTab('tab-assets')" id="btn-tab-assets" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
+          6. Activos Fijos y Modelos (17 + 4)
         </button>
-        <button onclick="switchTab('tab-contactos-activos')" id="btn-tab-contactos-activos" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Contactos (64) y Activos (17)
+        <button onclick="switchTab('tab-pricelists')" id="btn-tab-pricelists" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
+          7. Listas Precios ({total_rules_loaded}) y Costos (44)
+        </button>
+        <button onclick="switchTab('tab-contactos')" id="btn-tab-contactos" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
+          8. Clientes (19), Proveedores (45) y Asignación (15)
         </button>
       </nav>
     </div>
@@ -678,7 +665,6 @@ html_template += f"""
 
     <!-- ==================== TAB 5: ELIMINADAS (80 CXC/CXP) Y OBSOLETAS (57 DEPRECATED = TRUE) ==================== -->
     <div id="tab-deleted-archived" class="tab-content hidden space-y-6">
-      <!-- Sub-bloque 1: 80 Cuentas Eliminadas (CxC y CxP individuales) -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -728,7 +714,6 @@ html_template += f"""
         </div>
       </div>
 
-      <!-- Sub-bloque 2: 57 Cuentas Obsoletas (deprecated = True) -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -776,7 +761,142 @@ html_template += f"""
       </div>
     </div>
 
-    <!-- ==================== TAB 6: LISTAS DE PRECIOS & COSTOS ==================== -->
+    <!-- ==================== TAB 6: ACTIVOS FIJOS Y MODELOS (17 ACTIVOS + 4 MODELOS) ==================== -->
+    <div id="tab-assets" class="tab-content hidden space-y-6">
+      <!-- Resumen Financiero de Activos Fijos -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#455A64] uppercase">Modelos Contables</p>
+          <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">{len(asset_models_odoo)} Modelos</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">state = 'model' en Odoo</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#455A64] uppercase">Valor Original (MOI)</p>
+          <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">$217,337.65</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">17 Activos en MXN</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#AC0340] uppercase">Depreciación Acumulada</p>
+          <p class="text-2xl font-bold text-[#AC0340] mt-1 font-heading">$143,114.41</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">Corte Septiembre 2026</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#137333] uppercase">Valor Residual Fiscal</p>
+          <p class="text-2xl font-bold text-[#137333] mt-1 font-heading">$17.00 MXN</p>
+          <p class="text-[11px] text-[#137333] font-semibold mt-0.5">$1.00 MXN por activo</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#455A64] uppercase">Saldo por Depreciar</p>
+          <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">$74,206.24</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">Valor en libros: $74,223.24</p>
+        </div>
+      </div>
+
+      <!-- Tabla 1: 4 Modelos de Activos Fijos -->
+      <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
+        <div>
+          <h3 class="text-base font-bold text-[#282C2F] font-heading">4 Modelos de Activos Fijos Configurados en Odoo (06_Modelos_Activos_Fijos.csv)</h3>
+          <p class="text-xs text-[#455A64]">Vinculados directamente a las cuentas oficiales unificadas y diario de Operaciones Diversas (ID 51).</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
+              <tr>
+                <th class="py-2.5 px-3 text-left">ID Odoo</th>
+                <th class="py-2.5 px-3 text-left">Nombre del Modelo</th>
+                <th class="py-2.5 px-3 text-center">Método / Plazo</th>
+                <th class="py-2.5 px-3 text-left">Cuenta Activo Fijo</th>
+                <th class="py-2.5 px-3 text-left">Cuenta Depreciación Acumulada</th>
+                <th class="py-2.5 px-3 text-left">Cuenta Gasto Depreciación</th>
+                <th class="py-2.5 px-3 text-left">Diario</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E0E0E0] text-[#282C2F]">
+"""
+
+for m in asset_models_odoo:
+    acc_a = m['account_asset_id'][1] if isinstance(m['account_asset_id'], list) else str(m['account_asset_id'])
+    acc_d = m['account_depreciation_id'][1] if isinstance(m['account_depreciation_id'], list) else str(m['account_depreciation_id'])
+    acc_e = m['account_depreciation_expense_id'][1] if isinstance(m['account_depreciation_expense_id'], list) else str(m['account_depreciation_expense_id'])
+    j_name = m['journal_id'][1] if isinstance(m['journal_id'], list) else str(m['journal_id'])
+    html_template += f"""
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">{m['id']}</td>
+                <td class="py-2 px-3 font-bold text-[#282C2F]">{m['name']}</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">Lineal &bull; {m['method_number']} meses</td>
+                <td class="py-2 px-3 font-mono text-[#AC0340] font-semibold">{acc_a}</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">{acc_d}</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">{acc_e}</td>
+                <td class="py-2 px-3 text-[#455A64]">{j_name}</td>
+              </tr>
+"""
+
+html_template += f"""
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tabla 2: 17 Activos Fijos Individuales -->
+      <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-[#282C2F] font-heading">17 Activos Fijos Individuales en Borrador (06_Activos_Fijos_y_Depreciacion.csv)</h3>
+            <p class="text-xs text-[#455A64]">Cada activo conserva $1.00 MXN como valor residual no depreciable y sus cuentas contables oficiales.</p>
+          </div>
+          <input type="text" id="search-assets" onkeyup="filterTable('search-assets', 'table-assets')" placeholder="Filtrar activo fijo..." class="px-3 py-1.5 border border-[#B3B3B3] rounded text-xs focus:outline-none focus:border-[#AC0340] w-64 text-[#282C2F]">
+        </div>
+        <div class="overflow-x-auto">
+          <table id="table-assets" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
+              <tr>
+                <th class="py-2.5 px-3 text-left">ID</th>
+                <th class="py-2.5 px-3 text-left">Activo Fijo</th>
+                <th class="py-2.5 px-3 text-left">Modelo</th>
+                <th class="py-2.5 px-3 text-center">Adquisición</th>
+                <th class="py-2.5 px-3 text-right">Valor Original (MOI)</th>
+                <th class="py-2.5 px-3 text-right">Deprec. Acumulada</th>
+                <th class="py-2.5 px-3 text-right">Valor Residual</th>
+                <th class="py-2.5 px-3 text-right">Por Depreciar</th>
+                <th class="py-2.5 px-3 text-center">Meses Rest.</th>
+                <th class="py-2.5 px-3 text-left">Cuentas (Activo / Deprec. / Gasto)</th>
+                <th class="py-2.5 px-3 text-center">Estatus</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E0E0E0] text-[#282C2F]">
+"""
+
+for fa in fixed_assets_odoo:
+    m_name = fa['model_id'][1] if isinstance(fa['model_id'], list) else '—'
+    c_a = fa['account_asset_id'][1].split(' ')[0] if isinstance(fa['account_asset_id'], list) else ''
+    c_d = fa['account_depreciation_id'][1].split(' ')[0] if isinstance(fa['account_depreciation_id'], list) else ''
+    c_e = fa['account_depreciation_expense_id'][1].split(' ')[0] if isinstance(fa['account_depreciation_expense_id'], list) else ''
+    html_template += f"""
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">{fa['id']}</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">{fa['name']}</td>
+                <td class="py-2 px-3 text-[#455A64]">{m_name}</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">{fa['acquisition_date']}</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">${fa['original_value']:,.2f}</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">${fa['already_depreciated_amount_import']:,.2f}</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">${fa['salvage_value']:,.2f}</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">${fa['value_residual']:,.2f}</td>
+                <td class="py-2 px-3 text-center font-mono">{fa['method_number']} m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">{c_a} / {c_d} / {c_e}</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+"""
+
+html_template += f"""
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 7: LISTAS DE PRECIOS & COSTOS ==================== -->
     <div id="tab-pricelists" class="tab-content hidden space-y-4">
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -910,8 +1030,8 @@ html_template += f"""
       </div>
     </div>
 
-    <!-- ==================== TAB 7: CONTACTOS (64), ASIGNACION LISTAS (15) Y ACTIVOS FIJOS (17) ==================== -->
-    <div id="tab-contactos-activos" class="tab-content hidden space-y-6">
+    <!-- ==================== TAB 8: CLIENTES (19), PROVEEDORES (45) Y ASIGNACION LISTAS (15) ==================== -->
+    <div id="tab-contactos" class="tab-content hidden space-y-6">
       <!-- 15 Asignaciones de Listas de Precios -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div>
@@ -935,70 +1055,55 @@ html_template += f"""
         </div>
       </div>
 
-      <!-- 19 Clientes y 45 Proveedores -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-3">
-          <h3 class="text-base font-bold text-[#282C2F] font-heading">19 Clientes Sincronizados (CLIENTES_PROVEEDORES.xlsx)</h3>
-          <div class="overflow-x-auto max-h-[380px] overflow-y-auto">
-            <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-              <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
-                <tr>
-                  <th class="py-2 px-2.5 text-left">Razón Social</th>
-                  <th class="py-2 px-2.5 text-left">RFC</th>
-                  <th class="py-2 px-2.5 text-center">Régimen</th>
-                  <th class="py-2 px-2.5 text-left">Cuenta CxC</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#E0E0E0]">
-                {''.join(f'<tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">{c["name"]}</td><td class="py-2 px-2.5 font-mono text-[#455A64]">{c["rfc"]}</td><td class="py-2 px-2.5 text-center font-mono">{c["regimen"]}</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr>' for c in cli_rows)}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-3">
-          <h3 class="text-base font-bold text-[#282C2F] font-heading">45 Proveedores Sincronizados (CLIENTES_PROVEEDORES.xlsx)</h3>
-          <div class="overflow-x-auto max-h-[380px] overflow-y-auto">
-            <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-              <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
-                <tr>
-                  <th class="py-2 px-2.5 text-left">Razón Social</th>
-                  <th class="py-2 px-2.5 text-left">RFC</th>
-                  <th class="py-2 px-2.5 text-center">Régimen</th>
-                  <th class="py-2 px-2.5 text-left">Cuenta CxP</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#E0E0E0]">
-                {''.join(f'<tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">{p["name"]}</td><td class="py-2 px-2.5 font-mono text-[#455A64]">{p["rfc"]}</td><td class="py-2 px-2.5 text-center font-mono">{p["regimen"]}</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr>' for p in prov_rows)}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- 17 Activos Fijos -->
+      <!-- 19 Clientes -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h3 class="text-base font-bold text-[#282C2F] font-heading">17 Activos Fijos y 4 Modelos (Vinculados a Cuentas Oficiales Unificadas)</h3>
-            <p class="text-xs text-[#455A64]">Total Valor Original: <strong>$217,337.65 MXN</strong> &bull; Depreciación Acumulada: <strong>$143,114.41 MXN</strong> &bull; Valor Residual: <strong>$17.00 MXN ($1.00 c/u)</strong>.</p>
+            <h3 class="text-base font-bold text-[#282C2F] font-heading">19 Clientes dados de alta / actualizados (CLIENTES_PROVEEDORES.xlsx)</h3>
+            <p class="text-xs text-[#455A64]">Todos vinculados a la cuenta única por cobrar <span class="font-mono font-bold text-[#AC0340]">105.01.01 Clientes nacionales</span>.</p>
           </div>
+          <input type="text" id="search-cli" onkeyup="filterTable('search-cli', 'table-cli')" placeholder="Filtrar cliente por nombre o RFC..." class="px-3 py-1.5 border border-[#B3B3B3] rounded text-xs focus:outline-none focus:border-[#AC0340] w-64 text-[#282C2F]">
         </div>
-        <div class="overflow-x-auto">
-          <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
+        <div class="overflow-x-auto max-h-[420px] overflow-y-auto">
+          <table id="table-cli" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
               <tr>
-                <th class="py-2.5 px-3 text-left">Activo</th>
-                <th class="py-2.5 px-3 text-left">Modelo</th>
-                <th class="py-2.5 px-3 text-left">Adquisición</th>
-                <th class="py-2.5 px-3 text-right">Valor Original</th>
-                <th class="py-2.5 px-3 text-right">Depreciación Acum.</th>
-                <th class="py-2.5 px-3 text-right">Valor Residual</th>
-                <th class="py-2.5 px-3 text-center">Estado</th>
+                <th class="py-2 px-3 text-left">Razón Social</th>
+                <th class="py-2 px-3 text-left">RFC</th>
+                <th class="py-2 px-3 text-left">Domicilio / Ciudad / CP</th>
+                <th class="py-2 px-3 text-left">Régimen Fiscal SAT</th>
+                <th class="py-2 px-3 text-left">Cuenta CxC</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-[#E0E0E0]">
-              {''.join(f'<tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">{a["name"]}</td><td class="py-2 px-3 text-[#455A64]">{a["model"]}</td><td class="py-2 px-3 font-mono text-[#455A64]">{a["acq_date"]}</td><td class="py-2 px-3 text-right font-mono">${a["original"]:,.2f}</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">${a["depreciated"]:,.2f}</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">${a["residual"]:,.2f}</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">{a["status"]}</span></td></tr>' for a in assets_rows)}
+              {''.join(f'<tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">{c["name"]}</td><td class="py-2 px-3 font-mono text-[#455A64]">{c["rfc"]}</td><td class="py-2 px-3 text-[#455A64]">{c["street"]} &bull; {c["city"]} (CP {c["cp"]})</td><td class="py-2 px-3 text-[#282C2F]">{c["regimen"]}</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr>' for c in cli_rows)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 45 Proveedores -->
+      <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-[#282C2F] font-heading">45 Proveedores dados de alta / actualizados (CLIENTES_PROVEEDORES.xlsx)</h3>
+            <p class="text-xs text-[#455A64]">Todos vinculados a la cuenta única por pagar <span class="font-mono font-bold text-[#455A64]">201.01.01 Proveedores nacionales</span>.</p>
+          </div>
+          <input type="text" id="search-prov" onkeyup="filterTable('search-prov', 'table-prov')" placeholder="Filtrar proveedor por nombre o RFC..." class="px-3 py-1.5 border border-[#B3B3B3] rounded text-xs focus:outline-none focus:border-[#AC0340] w-64 text-[#282C2F]">
+        </div>
+        <div class="overflow-x-auto max-h-[450px] overflow-y-auto">
+          <table id="table-prov" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
+              <tr>
+                <th class="py-2 px-3 text-left">Razón Social</th>
+                <th class="py-2 px-3 text-left">RFC</th>
+                <th class="py-2 px-3 text-left">Domicilio / Ciudad / CP</th>
+                <th class="py-2 px-3 text-left">Régimen Fiscal SAT</th>
+                <th class="py-2 px-3 text-left">Cuenta CxP</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E0E0E0]">
+              {''.join(f'<tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">{p["name"]}</td><td class="py-2 px-3 font-mono text-[#455A64]">{p["rfc"]}</td><td class="py-2 px-3 text-[#455A64]">{p["street"]} &bull; {p["city"]} (CP {p["cp"]})</td><td class="py-2 px-3 text-[#282C2F]">{p["regimen"]}</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr>' for p in prov_rows)}
             </tbody>
           </table>
         </div>
@@ -1060,4 +1165,4 @@ output_path = '/Users/julioserna/.gemini/antigravity/scratch/southgenetics/index
 with open(output_path, 'w', encoding='utf-8') as f:
     f.write(html_template)
 
-print(f'Successfully generated index.html! Active={len(active_accounts)}, Created={len(created_by_file)}, Unified={len(unified_active)}, Tech={len(remaining_technical)}, Deleted={len(deleted_legacy)}, Deprecated={len(archived_accounts)}')
+print(f'Successfully generated index.html with all 8 dedicated tabs (COA + Fixed Assets + Pricelists/Costs + Contacts)!')

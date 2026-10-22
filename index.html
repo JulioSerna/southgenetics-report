@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informe de Auditoría y Catálogo Contable | SouthGenetics México</title>
+  <title>Informe de Auditoría Contable y Catálogos Maestros | SouthGenetics México</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Vauxoo Brand Self-Hosted Fonts (No Google Fonts CDN) */
@@ -168,16 +168,16 @@
             <span>Localización Mexicana SAT</span>
           </div>
           <h2 class="text-2xl font-bold tracking-tight font-heading">
-            Catálogo Contable Activo y Depuración Definitiva (Cuenta por Cuenta)
+            Catálogo Contable Activo, Activos Fijos y Catálogos Maestros
           </h2>
           <p class="text-sm text-[#E0E0E0] mt-1 max-w-3xl">
-            Catálogo 100% depurado conforme al archivo del Drive: <strong>171 cuentas activas en Odoo</strong> (filtro <span class="font-mono text-[#E4A900]">deprecated = False</span>) compuestas únicamente por las <strong>162 cuentas oficiales del Drive</strong> (84 nuevas creadas + 78 preexistentes unificadas/conservadas) y las <strong>9 cuentas técnicas que Odoo requiere</strong>. Se eliminaron las <strong>80 cuentas individuales de clientes/proveedores (105.01.xxx / 201.01.xxx)</strong> y las <strong>57 cuentas restantes</strong> quedaron ocultas como obsoletas (<span class="font-mono">deprecated = True</span>).
+            Catálogo 100% depurado conforme al archivo del Drive: <strong>171 cuentas activas en Odoo</strong> (84 nuevas creadas + 78 preexistentes unificadas/conservadas + 9 técnicas), <strong>80 cuentas CxC/CxP individuales eliminadas</strong>, <strong>4 modelos y 17 activos fijos</strong>, <strong>11 listas de precios (286 reglas MXN)</strong>, <strong>44 costos de proveedor (USD)</strong> y <strong>64 contactos sincronizados (45 proveedores, 19 clientes y 15 asignaciones de lista)</strong>.
           </p>
         </div>
         <div class="text-left md:text-right text-xs text-[#E0E0E0] space-y-1">
           <p><strong class="text-[#FFFFFF]">Ambiente:</strong> southgenetics-staging-2-40150710</p>
           <p><strong class="text-[#FFFFFF]">Cuentas Activas:</strong> <span class="text-[#E4A900] font-bold">171 en Odoo (162 Drive + 9 Técnicas)</span></p>
-          <p><strong class="text-[#FFFFFF]">Cuentas CxC / CxP Borradas:</strong> <span class="text-[#008000] font-bold">80 Eliminadas</span></p>
+          <p><strong class="text-[#FFFFFF]">Activos Fijos:</strong> <span class="text-[#E4A900] font-bold">4 Modelos &bull; 17 Activos ($1.00 residual)</span></p>
           <p><strong class="text-[#FFFFFF]">Pólizas en Odoo:</strong> <span class="text-[#008000] font-bold">0 Pólizas (100% Depuradas)</span></p>
         </div>
       </div>
@@ -187,101 +187,91 @@
   <!-- Contenido Principal -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-    <!-- KPI Grid Flat Cards -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
-      <div class="bg-[#FFFFFF] p-4 rounded border-2 border-[#AC0340]">
-        <p class="text-[11px] font-bold text-[#AC0340] uppercase tracking-wider">Cuentas Activas</p>
-        <p class="text-2xl font-bold text-[#AC0340] mt-1 font-heading">171</p>
-        <p class="text-[11px] text-[#282C2F] font-semibold mt-1">162 Drive + 9 Técnicas</p>
+    <!-- KPI Grid Fila 1: Plan Contable -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+      <div class="bg-[#FFFFFF] p-3.5 rounded border-2 border-[#AC0340]">
+        <p class="text-[10px] font-bold text-[#AC0340] uppercase tracking-wider">Cuentas Activas</p>
+        <p class="text-xl font-bold text-[#AC0340] mt-1 font-heading">171</p>
+        <p class="text-[10px] text-[#282C2F] font-semibold mt-0.5">162 Drive + 9 Téc.</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Cuentas Nuevas</p>
-        <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">84</p>
-        <p class="text-[11px] text-[#008000] font-semibold mt-1">Creadas desde Drive</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Cuentas Nuevas</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">84</p>
+        <p class="text-[10px] text-[#008000] font-semibold mt-0.5">Creadas por Archivo</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Unificadas / Quedaron</p>
-        <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">78</p>
-        <p class="text-[11px] text-[#455A64] font-semibold mt-1">75 Homologadas + 3 Iguales</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Unificadas</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">78</p>
+        <p class="text-[10px] text-[#455A64] font-semibold mt-0.5">75 Homol. + 3 Iguales</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Técnicas de Odoo</p>
-        <p class="text-2xl font-bold text-[#455A64] mt-1 font-heading">9</p>
-        <p class="text-[11px] text-[#455A64] mt-1">Bancos y Retenciones SAT</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Borradas / Obs.</p>
+        <p class="text-xl font-bold text-[#95999F] mt-1 font-heading">80 / 57</p>
+        <p class="text-[10px] text-[#455A64] mt-0.5">80 CxC/CxP &bull; 57 Obs.</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Eliminadas / Obsoletas</p>
-        <p class="text-2xl font-bold text-[#95999F] mt-1 font-heading">80 / 57</p>
-        <p class="text-[11px] text-[#455A64] mt-1">80 Borradas &bull; 57 Ocultas</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Activos Fijos</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">17 / 4</p>
+        <p class="text-[10px] text-[#008000] font-semibold mt-0.5">17 Activos &bull; 4 Modelos</p>
       </div>
 
-      <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
-        <p class="text-[11px] font-bold text-[#455A64] uppercase tracking-wider">Listas & Contactos</p>
-        <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">286 / 64</p>
-        <p class="text-[11px] text-[#AC0340] font-bold mt-1">11 Listas &bull; 15 Asignadas</p>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Listas Precios</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">286</p>
+        <p class="text-[10px] text-[#AC0340] font-bold mt-0.5">11 Listas MXN</p>
       </div>
-    </div>
 
-    <!-- Bloque de Homologación de Cuentas -->
-    <div class="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-6 border-l-4 border-l-[#AC0340]">
-      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-        <div class="space-y-2">
-          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#DCEFFE] text-[#455A64] text-xs font-bold">
-            AUDITORÍA DETALLADA DEL PLAN CONTABLE EN EL NUEVO STAGING
-          </div>
-          <h2 class="text-xl font-bold text-[#282C2F] font-heading">
-            ¿Qué cuentas quedaron después de la depuración? (171 Cuentas Activas)
-          </h2>
-          <p class="text-sm text-[#455A64] max-w-4xl leading-relaxed">
-            En la vista de cuentas activas de Odoo (<span class="font-mono bg-[#F5F5F5] text-[#AC0340] px-1 py-0.5 rounded font-semibold">deprecated = False</span>) quedaron únicamente:
-            <br>&bull; <strong>84 Cuentas Nuevas Creadas por Archivo:</strong> Cuentas del catálogo del Drive que no existían en Odoo y se dieron de alta.
-            <br>&bull; <strong>78 Cuentas Preexistentes que se Quedaron / Unificaron:</strong> <strong>75 cuentas</strong> que ya existían en Odoo y se igualaron en código (a 3 niveles) y/o nombre al plan contable del Drive, más <strong>3 cuentas</strong> (<span class="font-mono">107.05.01</span>, <span class="font-mono">201.01.01</span>, <span class="font-mono">205.06.01</span>) que ya tenían exactamente el código y nombre del Drive. (Total = <strong>162 cuentas oficiales del Drive</strong>).
-            <br>&bull; <strong>9 Cuentas Técnicas de Odoo:</strong> Cuentas requeridas por diarios bancarios BBVA (suspense/transferencia), impuestos SAT y provisión de laboratorios.
-            <br>&bull; <strong>80 Cuentas Individuales CxC/CxP Eliminadas (<span class="font-mono">unlink</span>):</strong> Todas las subcuentas individuales <span class="font-mono">105.01.xxx</span> y <span class="font-mono">201.01.xxx</span> fueron borradas tras apuntar <span class="font-mono">ir.property</span> a la única cuenta nacional <span class="font-mono">105.01.01 Clientes nacionales</span> y <span class="font-mono">201.01.01 Proveedores nacionales</span>.
-          </p>
-        </div>
-        <div class="bg-[#F5F5F5] p-4 rounded border border-[#E0E0E0] text-center min-w-[220px]">
-          <div class="text-3xl font-extrabold text-[#AC0340] font-heading">105.01.01</div>
-          <div class="text-[11px] uppercase tracking-wider font-semibold text-[#455A64] mt-1">Única CxC Clientes Nacionales</div>
-          <div class="text-xs text-[#008000] font-bold mt-1.5">80 individuales eliminadas</div>
-        </div>
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Costos Prov.</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">44</p>
+        <p class="text-[10px] text-[#008000] font-semibold mt-0.5">USD (Secuencia 1)</p>
+      </div>
+
+      <div class="bg-[#FFFFFF] p-3.5 rounded border border-[#E0E0E0]">
+        <p class="text-[10px] font-bold text-[#455A64] uppercase tracking-wider">Clientes / Prov.</p>
+        <p class="text-xl font-bold text-[#282C2F] mt-1 font-heading">19 / 45</p>
+        <p class="text-[10px] text-[#455A64] font-semibold mt-0.5">15 Listas Asignadas</p>
       </div>
     </div>
 
-    <!-- Navegación por Pestañas -->
-    <div class="border-b border-[#E0E0E0] no-print">
-      <nav class="-mb-px flex space-x-1 md:space-x-3 overflow-x-auto text-xs sm:text-sm font-semibold" id="tabs">
-        <button onclick="switchTab('tab-official')" id="btn-tab-official" class="tab-btn active py-3 px-3.5 border-b-2 font-bold text-[#AC0340] transition flex items-center gap-1.5 whitespace-nowrap">
+    <!-- Navegación por Pestañas (Todas las Pestañas de Plan Contable + Todos los Maestros) -->
+    <div class="border-b border-[#E0E0E0] no-print bg-[#FFFFFF] px-3 rounded-t border-t border-x">
+      <nav class="-mb-px flex flex-wrap gap-1 text-xs font-semibold" id="tabs">
+        <button onclick="switchTab('tab-official')" id="btn-tab-official" class="tab-btn active py-3 px-3 border-b-2 font-bold text-[#AC0340] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
-          Catálogo Drive (162: Origen por Cuenta)
+          1. Catálogo Drive (162)
         </button>
-        <button onclick="switchTab('tab-unified')" id="btn-tab-unified" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-unified')" id="btn-tab-unified" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Unificadas / Quedaron (78)
+          2. Unificadas / Quedaron (78)
         </button>
-        <button onclick="switchTab('tab-created')" id="btn-tab-created" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-created')" id="btn-tab-created" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Cuentas Nuevas (84)
+          3. Cuentas Nuevas (84)
         </button>
-        <button onclick="switchTab('tab-technical')" id="btn-tab-technical" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-technical')" id="btn-tab-technical" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Técnicas que Quedan (9)
+          4. Técnicas Odoo (9)
         </button>
-        <button onclick="switchTab('tab-deleted-archived')" id="btn-tab-deleted-archived" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+        <button onclick="switchTab('tab-deleted-archived')" id="btn-tab-deleted-archived" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-[#95999F]"></span>
-          Eliminadas (80) y Obsoletas (57)
+          5. Eliminadas (80) y Obsoletas (57)
         </button>
-        <button onclick="switchTab('tab-pricelists')" id="btn-tab-pricelists" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Listas (286) y Costos (44)
+        <button onclick="switchTab('tab-assets')" id="btn-tab-assets" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
+          6. Activos Fijos y Modelos (17 + 4)
         </button>
-        <button onclick="switchTab('tab-contactos-activos')" id="btn-tab-contactos-activos" class="tab-btn py-3 px-3.5 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-[#455A64]"></span>
-          Contactos (64) y Activos (17)
+        <button onclick="switchTab('tab-pricelists')" id="btn-tab-pricelists" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
+          7. Listas Precios (286) y Costos (44)
+        </button>
+        <button onclick="switchTab('tab-contactos')" id="btn-tab-contactos" class="tab-btn py-3 px-3 border-b-2 border-transparent text-[#455A64] hover:text-[#282C2F] transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-[#AC0340]"></span>
+          8. Clientes (19), Proveedores (45) y Asignación (15)
         </button>
       </nav>
     </div>
@@ -3578,7 +3568,6 @@
 
     <!-- ==================== TAB 5: ELIMINADAS (80 CXC/CXP) Y OBSOLETAS (57 DEPRECATED = TRUE) ==================== -->
     <div id="tab-deleted-archived" class="tab-content hidden space-y-6">
-      <!-- Sub-bloque 1: 80 Cuentas Eliminadas (CxC y CxP individuales) -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -4491,7 +4480,6 @@
         </div>
       </div>
 
-      <!-- Sub-bloque 2: 57 Cuentas Obsoletas (deprecated = True) -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -5094,7 +5082,410 @@
       </div>
     </div>
 
-    <!-- ==================== TAB 6: LISTAS DE PRECIOS & COSTOS ==================== -->
+    <!-- ==================== TAB 6: ACTIVOS FIJOS Y MODELOS (17 ACTIVOS + 4 MODELOS) ==================== -->
+    <div id="tab-assets" class="tab-content hidden space-y-6">
+      <!-- Resumen Financiero de Activos Fijos -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#455A64] uppercase">Modelos Contables</p>
+          <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">4 Modelos</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">state = 'model' en Odoo</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#455A64] uppercase">Valor Original (MOI)</p>
+          <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">$217,337.65</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">17 Activos en MXN</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#AC0340] uppercase">Depreciación Acumulada</p>
+          <p class="text-2xl font-bold text-[#AC0340] mt-1 font-heading">$143,114.41</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">Corte Septiembre 2026</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#137333] uppercase">Valor Residual Fiscal</p>
+          <p class="text-2xl font-bold text-[#137333] mt-1 font-heading">$17.00 MXN</p>
+          <p class="text-[11px] text-[#137333] font-semibold mt-0.5">$1.00 MXN por activo</p>
+        </div>
+        <div class="bg-[#FFFFFF] p-4 rounded border border-[#E0E0E0]">
+          <p class="text-[11px] font-bold text-[#455A64] uppercase">Saldo por Depreciar</p>
+          <p class="text-2xl font-bold text-[#282C2F] mt-1 font-heading">$74,206.24</p>
+          <p class="text-[11px] text-[#455A64] mt-0.5">Valor en libros: $74,223.24</p>
+        </div>
+      </div>
+
+      <!-- Tabla 1: 4 Modelos de Activos Fijos -->
+      <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
+        <div>
+          <h3 class="text-base font-bold text-[#282C2F] font-heading">4 Modelos de Activos Fijos Configurados en Odoo (06_Modelos_Activos_Fijos.csv)</h3>
+          <p class="text-xs text-[#455A64]">Vinculados directamente a las cuentas oficiales unificadas y diario de Operaciones Diversas (ID 51).</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
+              <tr>
+                <th class="py-2.5 px-3 text-left">ID Odoo</th>
+                <th class="py-2.5 px-3 text-left">Nombre del Modelo</th>
+                <th class="py-2.5 px-3 text-center">Método / Plazo</th>
+                <th class="py-2.5 px-3 text-left">Cuenta Activo Fijo</th>
+                <th class="py-2.5 px-3 text-left">Cuenta Depreciación Acumulada</th>
+                <th class="py-2.5 px-3 text-left">Cuenta Gasto Depreciación</th>
+                <th class="py-2.5 px-3 text-left">Diario</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E0E0E0] text-[#282C2F]">
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">5</td>
+                <td class="py-2 px-3 font-bold text-[#282C2F]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">Lineal &bull; 36 meses</td>
+                <td class="py-2 px-3 font-mono text-[#AC0340] font-semibold">156.01.01 Equipo de cómputo</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">171.05.01 Depreciación acumulada de equipo de cómputo</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">601.99.05 Depreciación de equipo de cómputo</td>
+                <td class="py-2 px-3 text-[#455A64]">Miscellaneous Operations</td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">6</td>
+                <td class="py-2 px-3 font-bold text-[#282C2F]">Mobiliario y equipo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">Lineal &bull; 60 meses</td>
+                <td class="py-2 px-3 font-mono text-[#AC0340] font-semibold">155.01.01 Mob y Equipo de oficina</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">171.04.01 Depreciacion Acum Mob y Equipo</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">601.99.04 Depreciación de mobiliario y equipo de oficina</td>
+                <td class="py-2 px-3 text-[#455A64]">Miscellaneous Operations</td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">7</td>
+                <td class="py-2 px-3 font-bold text-[#282C2F]">Equipo de transporte</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">Lineal &bull; 48 meses</td>
+                <td class="py-2 px-3 font-mono text-[#AC0340] font-semibold">154.01.01 Automóviles y equipo de transporte</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">154.02.01 Depreciación acumulada de equipo de transporte</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">601.33.01 Depreciación de equipo de transporte</td>
+                <td class="py-2 px-3 text-[#455A64]">Miscellaneous Operations</td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">8</td>
+                <td class="py-2 px-3 font-bold text-[#282C2F]">Maquinaria y equipo de laboratorio</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">Lineal &bull; 120 meses</td>
+                <td class="py-2 px-3 font-mono text-[#AC0340] font-semibold">155.02.01 Equipo médico y de laboratorio</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">171.02.01 Depreciación acumulada de equipo de laboratorio</td>
+                <td class="py-2 px-3 font-mono text-[#455A64]">601.99.02 Depreciación de equipo de laboratorio</td>
+                <td class="py-2 px-3 text-[#455A64]">Miscellaneous Operations</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tabla 2: 17 Activos Fijos Individuales -->
+      <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-[#282C2F] font-heading">17 Activos Fijos Individuales en Borrador (06_Activos_Fijos_y_Depreciacion.csv)</h3>
+            <p class="text-xs text-[#455A64]">Cada activo conserva $1.00 MXN como valor residual no depreciable y sus cuentas contables oficiales.</p>
+          </div>
+          <input type="text" id="search-assets" onkeyup="filterTable('search-assets', 'table-assets')" placeholder="Filtrar activo fijo..." class="px-3 py-1.5 border border-[#B3B3B3] rounded text-xs focus:outline-none focus:border-[#AC0340] w-64 text-[#282C2F]">
+        </div>
+        <div class="overflow-x-auto">
+          <table id="table-assets" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
+              <tr>
+                <th class="py-2.5 px-3 text-left">ID</th>
+                <th class="py-2.5 px-3 text-left">Activo Fijo</th>
+                <th class="py-2.5 px-3 text-left">Modelo</th>
+                <th class="py-2.5 px-3 text-center">Adquisición</th>
+                <th class="py-2.5 px-3 text-right">Valor Original (MOI)</th>
+                <th class="py-2.5 px-3 text-right">Deprec. Acumulada</th>
+                <th class="py-2.5 px-3 text-right">Valor Residual</th>
+                <th class="py-2.5 px-3 text-right">Por Depreciar</th>
+                <th class="py-2.5 px-3 text-center">Meses Rest.</th>
+                <th class="py-2.5 px-3 text-left">Cuentas (Activo / Deprec. / Gasto)</th>
+                <th class="py-2.5 px-3 text-center">Estatus</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E0E0E0] text-[#282C2F]">
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">9</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Equipo de computo</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2015-10-30</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$7,538.79</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$7,537.79</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$0.00</td>
+                <td class="py-2 px-3 text-center font-mono">0 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">10</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Equipo de computo</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2016-03-01</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$15,880.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$15,879.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$0.00</td>
+                <td class="py-2 px-3 text-center font-mono">0 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">11</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Impresora Laser</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2021-02-04</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$11,074.51</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$11,073.51</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$0.00</td>
+                <td class="py-2 px-3 text-center font-mono">0 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">12</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">LT Asus</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2021-06-17</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$18,619.91</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$18,618.91</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$0.00</td>
+                <td class="py-2 px-3 text-center font-mono">0 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">13</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Laptop HP 14 DK1508LA 14''</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2022-02-17</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$10,000.09</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$9,999.09</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$0.00</td>
+                <td class="py-2 px-3 text-center font-mono">0 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">14</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Multifuncional duplex 45 ppm</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2022-04-25</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$11,600.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$11,599.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$0.00</td>
+                <td class="py-2 px-3 text-center font-mono">0 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">15</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Lenovo 82x70003lmCore i5 13va ram 8 GB 512 SSD 15 Pulgadas Pantalla Touch Color Azul</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2024-07-30</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$13,846.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$8,999.90</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$4,845.10</td>
+                <td class="py-2 px-3 text-center font-mono">14 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">16</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Lenovo 82x70003lmCore i5 13va ram 8 GB 512 SSD 15 Pulgadas Pantalla Touch Color Azul</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2024-07-30</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$13,846.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$8,999.90</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$4,845.10</td>
+                <td class="py-2 px-3 text-center font-mono">14 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">17</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Lenovo 82x70003lmCore i5 13va ram 8 GB 512 SSD 15 Pulgadas Pantalla Touch Color Azul</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2024-09-23</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$13,846.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$8,307.60</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$5,537.40</td>
+                <td class="py-2 px-3 text-center font-mono">16 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">18</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">MULTIFUNCIONAL EPSON ECOTANK L6270</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2025-01-27</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$7,610.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$3,805.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$3,804.00</td>
+                <td class="py-2 px-3 text-center font-mono">20 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">19</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">10 pz Tablet Samsung Galaxy Tab A9 Plus 128gb Silver</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2025-02-14</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$53,000.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$25,175.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$27,824.00</td>
+                <td class="py-2 px-3 text-center font-mono">21 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">20</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Laptop Lenovo IdeaPad NB IP Slim 3 15IAH8 I5 8GB 512GB Touch Gris</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2025-06-06</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$14,846.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$5,567.25</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$9,277.75</td>
+                <td class="py-2 px-3 text-center font-mono">25 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">21</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Funda Teclado para Samsung Galalxy Tab A9+ A9 Plus Funda Teclado</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2025-06-06</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$7,520.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$2,820.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$4,699.00</td>
+                <td class="py-2 px-3 text-center font-mono">25 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">22</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Monitor Gamer LG UltraGear G4 LCD 23.8", 1920x1080 Full HD, G-Sync/FreeSync, 144Hz, HDMI/DisplayPort, Negro | Costo de envío</td>
+                <td class="py-2 px-3 text-[#455A64]">Equipo de cómputo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2026-05-29</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$2,150.86</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$215.08</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$1,934.78</td>
+                <td class="py-2 px-3 text-center font-mono">36 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">156.01.01 / 171.05.01 / 601.99.05</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">23</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Silla Ejecutiva</td>
+                <td class="py-2 px-3 text-[#455A64]">Mobiliario y equipo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2022-03-25</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$2,469.83</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$1,111.42</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$1,357.41</td>
+                <td class="py-2 px-3 text-center font-mono">66 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">155.01.01 / 171.04.01 / 601.99.04</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">24</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Silla Ejecutiva</td>
+                <td class="py-2 px-3 text-[#455A64]">Mobiliario y equipo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2022-03-29</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$2,464.66</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$1,109.09</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$1,354.57</td>
+                <td class="py-2 px-3 text-center font-mono">66 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">155.01.01 / 171.04.01 / 601.99.04</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-[#F5F5F5]/60">
+                <td class="py-2 px-3 font-mono text-slate-500">25</td>
+                <td class="py-2 px-3 font-semibold text-[#282C2F]">Recepcion y archiveros</td>
+                <td class="py-2 px-3 text-[#455A64]">Mobiliario y equipo</td>
+                <td class="py-2 px-3 text-center font-mono text-[#455A64]">2024-08-22</td>
+                <td class="py-2 px-3 text-right font-mono font-semibold">$11,025.00</td>
+                <td class="py-2 px-3 text-right font-mono text-[#AC0340]">$2,296.87</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td>
+                <td class="py-2 px-3 text-right font-mono font-bold text-[#282C2F]">$8,727.13</td>
+                <td class="py-2 px-3 text-center font-mono">95 m</td>
+                <td class="py-2 px-3 font-mono text-[11px] text-[#455A64]">155.01.01 / 171.04.01 / 601.99.04</td>
+                <td class="py-2 px-3 text-center">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador</span>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 7: LISTAS DE PRECIOS & COSTOS ==================== -->
     <div id="tab-pricelists" class="tab-content hidden space-y-4">
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -5843,8 +6234,8 @@
       </div>
     </div>
 
-    <!-- ==================== TAB 7: CONTACTOS (64), ASIGNACION LISTAS (15) Y ACTIVOS FIJOS (17) ==================== -->
-    <div id="tab-contactos-activos" class="tab-content hidden space-y-6">
+    <!-- ==================== TAB 8: CLIENTES (19), PROVEEDORES (45) Y ASIGNACION LISTAS (15) ==================== -->
+    <div id="tab-contactos" class="tab-content hidden space-y-6">
       <!-- 15 Asignaciones de Listas de Precios -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div>
@@ -5868,70 +6259,55 @@
         </div>
       </div>
 
-      <!-- 19 Clientes y 45 Proveedores -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-3">
-          <h3 class="text-base font-bold text-[#282C2F] font-heading">19 Clientes Sincronizados (CLIENTES_PROVEEDORES.xlsx)</h3>
-          <div class="overflow-x-auto max-h-[380px] overflow-y-auto">
-            <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-              <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
-                <tr>
-                  <th class="py-2 px-2.5 text-left">Razón Social</th>
-                  <th class="py-2 px-2.5 text-left">RFC</th>
-                  <th class="py-2 px-2.5 text-center">Régimen</th>
-                  <th class="py-2 px-2.5 text-left">Cuenta CxC</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#E0E0E0]">
-                <tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">COI CENTRO ONCOLOGICO INTERNACIONAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">OOI110513A52</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">AXA SEGUROS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">ASE931116231</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">GRUPO NACIONAL PROVINCIAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">GNP9211244P0</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SEGUROS INBURSA, S.A., GRUPO FINANCIERO INBURSA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SIN9408027L7</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">BUPA MEXICO COMPAÑIA DE SEGUROS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">BMS030731PC4</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SECRETARIA DE LA DEFENSA NACIONAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SDN8501014D2</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">INSTITUTO MEXICANO DEL SEGURO SOCIAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">IMS421231I45</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">KLINICSYNC</td><td class="py-2 px-2.5 font-mono text-[#455A64]">KLI200622TM4</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">PROMOTORA SN</td><td class="py-2 px-2.5 font-mono text-[#455A64]">PSN150213JP0</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SERVICIOS DE ONCOLOGIA MEDICA INTEGRAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SOM020726RU0</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">THE AMERICAN BRITISH COWDRAY MEDICAL CENTER</td><td class="py-2 px-2.5 font-mono text-[#455A64]">ABC4107047I0</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">CENTRO DE INVESTIGACION ONCOLOGICA DE SINALOA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">CIO1408142Q0</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SERVICIOS DE SALUD DE CHIHUAHUA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SSC971029MU9</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">UNIVERSIDAD DE GUANAJUATO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">UGU450325KY2</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SERVICIOS DE SALUD DE SINALOA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SSS9610231Y3</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">UNIVERSIDAD NACIONAL AUTONOMA DE MEXICO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">UNA2907227Y5</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">ADMINISTRACION DE LA BENEFICENCIA PUBLICA DEL ESTADO DE SINALOA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">ABP951025829</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">MUNICIPIO DE MAZATLAN</td><td class="py-2 px-2.5 font-mono text-[#455A64]">MMA810101BN9</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">CENTRO DE ENDOCRINOLOGIA INTEGRAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">CEI260312TE3</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#AC0340] font-bold">105.01.01</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-3">
-          <h3 class="text-base font-bold text-[#282C2F] font-heading">45 Proveedores Sincronizados (CLIENTES_PROVEEDORES.xlsx)</h3>
-          <div class="overflow-x-auto max-h-[380px] overflow-y-auto">
-            <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-              <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
-                <tr>
-                  <th class="py-2 px-2.5 text-left">Razón Social</th>
-                  <th class="py-2 px-2.5 text-left">RFC</th>
-                  <th class="py-2 px-2.5 text-center">Régimen</th>
-                  <th class="py-2 px-2.5 text-left">Cuenta CxP</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[#E0E0E0]">
-                <tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">ADMINISTRADORA CITI</td><td class="py-2 px-2.5 font-mono text-[#455A64]">ACI070313HD8</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">CONDOMINIO WORLD TRADE CENTER CIUDAD DE MEXICO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">CWT021014H2A</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">DOLIFORM SERVICIOS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">DSE161027U82</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">DHL EXPRESS MEXICO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">DEM8801152E9</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">FEDERAL EXPRESS HOLDINGS (MEXICO) Y COMPAÑIA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">FEH940630UG2</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">AXTEL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">AXT940727FP8</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">RADIOMOVIL DIPSA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">RDI841003QJ4</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">DAVID MOLINA AMAR</td><td class="py-2 px-2.5 font-mono text-[#455A64]">MOAD7606078V0</td><td class="py-2 px-2.5 text-center font-mono">612</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">MARIA ANGELICA SUAREZ RUIZ</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SURA530321JS2</td><td class="py-2 px-2.5 text-center font-mono">606</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">LALO EXPRESS VIP</td><td class="py-2 px-2.5 font-mono text-[#455A64]">LEV211117UA5</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">KONTOR NET AMERICA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">KNA170925T31</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">PATOLOGOS ASOCIADOS DEL PEDREGAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">PAP180828LS5</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SAMIA GONZALEZ VILLAGOMEZ</td><td class="py-2 px-2.5 font-mono text-[#455A64]">GOVS760311JT3</td><td class="py-2 px-2.5 text-center font-mono">612</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">FUCAM</td><td class="py-2 px-2.5 font-mono text-[#455A64]">FUC000126KW5</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">BEBIDAS PURIFICADAS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">BPU7901018D4</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">QUEST DIAGNOSTICS MEXICO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">QDM521124S17</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">REGUMED</td><td class="py-2 px-2.5 font-mono text-[#455A64]">REG191125BK3</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">DANIEL BARCENAS RAMIREZ</td><td class="py-2 px-2.5 font-mono text-[#455A64]">BARD790622IZ7</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">BIOGENICA, LABORATORIOS CLINICOS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">BLC170316E98</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">DANNA SOFIA RAMOS ZEPEDA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">RAZD000325DA5</td><td class="py-2 px-2.5 text-center font-mono">612</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">ALEJANDRA MORA MENDOZA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">MOMA600403AH7</td><td class="py-2 px-2.5 text-center font-mono">612</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">AZTEC MEDIC</td><td class="py-2 px-2.5 font-mono text-[#455A64]">AME181017JV4</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SILVIA DAMIAN HEREDIA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">DAHS6602272T6</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">PEDRO GOMEZ ROMERO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">GORP8910112A3</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">RED DE LABORATORIOS NACIONALES</td><td class="py-2 px-2.5 font-mono text-[#455A64]">RLN061004SV7</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">TECH BUKERS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">TBU210421JV6</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">JUAN RAMON GARCIA TIRADO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">GATJ611217ELA</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">RAUL ERNESTO VALDEZ OLIVAS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">VAOR600301D12</td><td class="py-2 px-2.5 text-center font-mono">612</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">FERNANDO LARIOS VILLALOBOS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">LAVF650106CXA</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">JESUS EDUARDO AMEZCUA GALVEZ</td><td class="py-2 px-2.5 font-mono text-[#455A64]">AEGJ8909139D3</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SERVICIO DE ADMINISTRACION TRIBUTARIA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SAT970701NN3</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">INSTITUTO MEXICANO DEL SEGURO SOCIAL</td><td class="py-2 px-2.5 font-mono text-[#455A64]">IMS421231I45</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">BBVA MEXICO, S.A., INSTITUCION DE BANCA MULTIPLE, GRUPO FINANCIERO BBVA MEXICO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">BBA830831LJ2</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">OPENPAY</td><td class="py-2 px-2.5 font-mono text-[#455A64]">OPE130906HN4</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">AMERICAN EXPRESS COMPANY MEXICO</td><td class="py-2 px-2.5 font-mono text-[#455A64]">AEC810901298</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">THE AMERICAN BRITISH COWDRAY MEDICAL CENTER</td><td class="py-2 px-2.5 font-mono text-[#455A64]">ABC4107047I0</td><td class="py-2 px-2.5 text-center font-mono">603</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">EDENRED MEXICO FINTECH</td><td class="py-2 px-2.5 font-mono text-[#455A64]">EMF210820KE8</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">MARIA DEL SOCORRO VILLAGOMEZ DUARTE</td><td class="py-2 px-2.5 font-mono text-[#455A64]">VIDS6204035T8</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SERVICIOS MEDICOS Y DE LABORATORIO DEL SURESTE</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SML141002HV0</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SOCIEDAD MEXICANA DE NUTRICION Y ENDOCRINOLOGIA</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SMN6210268W5</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">CELENE MARITZA PEÑA CAMPOS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">PECC830326155</td><td class="py-2 px-2.5 text-center font-mono">626</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">PREVENTIVE CUSTOMER HEALTHCARE</td><td class="py-2 px-2.5 font-mono text-[#455A64]">PCH200311FH2</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">PUBLISHER CONCEPTOS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">PCO210722MY0</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">AXA SEGUROS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">ASE931116231</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-2.5 font-medium">SACI LOGISTICS</td><td class="py-2 px-2.5 font-mono text-[#455A64]">SLO0901193B3</td><td class="py-2 px-2.5 text-center font-mono">601</td><td class="py-2 px-2.5 font-mono text-[#455A64] font-bold">201.01.01</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- 17 Activos Fijos -->
+      <!-- 19 Clientes -->
       <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h3 class="text-base font-bold text-[#282C2F] font-heading">17 Activos Fijos y 4 Modelos (Vinculados a Cuentas Oficiales Unificadas)</h3>
-            <p class="text-xs text-[#455A64]">Total Valor Original: <strong>$217,337.65 MXN</strong> &bull; Depreciación Acumulada: <strong>$143,114.41 MXN</strong> &bull; Valor Residual: <strong>$17.00 MXN ($1.00 c/u)</strong>.</p>
+            <h3 class="text-base font-bold text-[#282C2F] font-heading">19 Clientes dados de alta / actualizados (CLIENTES_PROVEEDORES.xlsx)</h3>
+            <p class="text-xs text-[#455A64]">Todos vinculados a la cuenta única por cobrar <span class="font-mono font-bold text-[#AC0340]">105.01.01 Clientes nacionales</span>.</p>
           </div>
+          <input type="text" id="search-cli" onkeyup="filterTable('search-cli', 'table-cli')" placeholder="Filtrar cliente por nombre o RFC..." class="px-3 py-1.5 border border-[#B3B3B3] rounded text-xs focus:outline-none focus:border-[#AC0340] w-64 text-[#282C2F]">
         </div>
-        <div class="overflow-x-auto">
-          <table class="min-w-full divide-y divide-[#E0E0E0] text-xs">
-            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase">
+        <div class="overflow-x-auto max-h-[420px] overflow-y-auto">
+          <table id="table-cli" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
               <tr>
-                <th class="py-2.5 px-3 text-left">Activo</th>
-                <th class="py-2.5 px-3 text-left">Modelo</th>
-                <th class="py-2.5 px-3 text-left">Adquisición</th>
-                <th class="py-2.5 px-3 text-right">Valor Original</th>
-                <th class="py-2.5 px-3 text-right">Depreciación Acum.</th>
-                <th class="py-2.5 px-3 text-right">Valor Residual</th>
-                <th class="py-2.5 px-3 text-center">Estado</th>
+                <th class="py-2 px-3 text-left">Razón Social</th>
+                <th class="py-2 px-3 text-left">RFC</th>
+                <th class="py-2 px-3 text-left">Domicilio / Ciudad / CP</th>
+                <th class="py-2 px-3 text-left">Régimen Fiscal SAT</th>
+                <th class="py-2 px-3 text-left">Cuenta CxC</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-[#E0E0E0]">
-              <tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Equipo de computo</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">30/10/2015</td><td class="py-2 px-3 text-right font-mono">$7,538.79</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$7,537.79</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Equipo de computo</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">01/03/2016</td><td class="py-2 px-3 text-right font-mono">$15,880.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$15,879.00</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Impresora Laser</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">04/02/2021</td><td class="py-2 px-3 text-right font-mono">$11,074.51</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$11,073.51</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">LT Asus</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">17/06/2021</td><td class="py-2 px-3 text-right font-mono">$18,619.91</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$18,618.91</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Laptop HP 14 DK1508LA 14''</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">17/02/2022</td><td class="py-2 px-3 text-right font-mono">$10,000.09</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$9,999.09</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Multifuncional duplex 45 ppm</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">25/04/2022</td><td class="py-2 px-3 text-right font-mono">$11,600.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$11,599.00</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Lenovo 82x70003lmCore i5 13va ram 8 GB 512 SSD 15 Pulgadas Pantalla Touch Color Azul</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">30/07/2024</td><td class="py-2 px-3 text-right font-mono">$13,846.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$8,999.90</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Lenovo 82x70003lmCore i5 13va ram 8 GB 512 SSD 15 Pulgadas Pantalla Touch Color Azul</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">30/07/2024</td><td class="py-2 px-3 text-right font-mono">$13,846.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$8,999.90</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Lenovo 82x70003lmCore i5 13va ram 8 GB 512 SSD 15 Pulgadas Pantalla Touch Color Azul</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">23/09/2024</td><td class="py-2 px-3 text-right font-mono">$13,846.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$8,307.60</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">MULTIFUNCIONAL EPSON ECOTANK L6270</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">27/01/2025</td><td class="py-2 px-3 text-right font-mono">$7,610.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$3,805.00</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">10 pz Tablet Samsung Galaxy Tab A9 Plus 128gb Silver</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">14/02/2025</td><td class="py-2 px-3 text-right font-mono">$53,000.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$25,175.00</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Laptop Lenovo IdeaPad NB IP Slim 3 15IAH8 I5 8GB 512GB Touch Gris</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">06/06/2025</td><td class="py-2 px-3 text-right font-mono">$14,846.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$5,567.25</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Funda Teclado para Samsung Galalxy Tab A9+ A9 Plus Funda Teclado</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">06/06/2025</td><td class="py-2 px-3 text-right font-mono">$7,520.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$2,820.00</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Monitor Gamer LG UltraGear G4 LCD 23.8", 1920x1080 Full HD, G-Sync/FreeSync, 144Hz, HDMI/DisplayPort, Negro | Costo de envío</td><td class="py-2 px-3 text-[#455A64]">Equipo de computo</td><td class="py-2 px-3 font-mono text-[#455A64]">29/05/2026</td><td class="py-2 px-3 text-right font-mono">$2,150.86</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$215.08</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Silla Ejecutiva</td><td class="py-2 px-3 text-[#455A64]">Mobiliario y equipo</td><td class="py-2 px-3 font-mono text-[#455A64]">25/03/2022</td><td class="py-2 px-3 text-right font-mono">$2,469.83</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$1,111.42</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Silla Ejecutiva</td><td class="py-2 px-3 text-[#455A64]">Mobiliario y equipo</td><td class="py-2 px-3 font-mono text-[#455A64]">29/03/2022</td><td class="py-2 px-3 text-right font-mono">$2,464.66</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$1,109.09</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">Recepcion y archiveros</td><td class="py-2 px-3 text-[#455A64]">Mobiliario y equipo</td><td class="py-2 px-3 font-mono text-[#455A64]">22/08/2024</td><td class="py-2 px-3 text-right font-mono">$11,025.00</td><td class="py-2 px-3 text-right font-mono text-[#AC0340]">$2,296.87</td><td class="py-2 px-3 text-right font-mono font-bold text-[#137333]">$1.00</td><td class="py-2 px-3 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#E6F4EA] text-[#137333] border border-[#CEEAD6]">Borrador (Cuentas Oficiales)</span></td></tr>
+              <tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">COI CENTRO ONCOLOGICO INTERNACIONAL</td><td class="py-2 px-3 font-mono text-[#455A64]">OOI110513A52</td><td class="py-2 px-3 text-[#455A64]">PERIFERICO SUR 5246-PISO 9 . COL. PEDREGAL DE CARRASCO, COYOACAN &bull; CIUDAD DE MÉXICO (CP 04700)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">AXA SEGUROS</td><td class="py-2 px-3 font-mono text-[#455A64]">ASE931116231</td><td class="py-2 px-3 text-[#455A64]">AV. FELIX CUEVAS 366-PISO 6 Col. Tlacoquemécatl, Benito Juárez &bull; CIUDAD DE MÉXICO (CP 03200)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">GRUPO NACIONAL PROVINCIAL</td><td class="py-2 px-3 font-mono text-[#455A64]">GNP9211244P0</td><td class="py-2 px-3 text-[#455A64]">AV CERRO DE LAS TORRES 395 CAMPESTRE CHURUBUSCO, COL. CAMPESTRE CHURUBUSCO, COYOACAN &bull; CIUDAD DE MÉXICO (CP 04200)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SEGUROS INBURSA, S.A., GRUPO FINANCIERO INBURSA</td><td class="py-2 px-3 font-mono text-[#455A64]">SIN9408027L7</td><td class="py-2 px-3 text-[#455A64]">INSURGENTES SUR 3500 COL. PEÑA POBRE, TLALPAN &bull; CIUDAD DE MÉXICO (CP 14060)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">BUPA MEXICO COMPAÑIA DE SEGUROS</td><td class="py-2 px-3 font-mono text-[#455A64]">BMS030731PC4</td><td class="py-2 px-3 text-[#455A64]">AVENIDA EJÉRCITO NACIONAL 843-B PISO 9, COL GRANADA, MIGUEL HIDALGO &bull; CIUDAD DE MÉXICO (CP 11520)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SECRETARIA DE LA DEFENSA NACIONAL</td><td class="py-2 px-3 font-mono text-[#455A64]">SDN8501014D2</td><td class="py-2 px-3 text-[#455A64]">BLVD MANUEL AVILA CAMACHO SN, COL LOMAS DE SOTELO, MIGUEL HIDALGO &bull; CIUDAD DE MÉXICO (CP 11200)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">INSTITUTO MEXICANO DEL SEGURO SOCIAL</td><td class="py-2 px-3 font-mono text-[#455A64]">IMS421231I45</td><td class="py-2 px-3 text-[#455A64]">REFORMA 476, COL JUAREZ, CUAUHTÉMOC &bull; CIUDAD DE MÉXICO (CP 06600)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">KLINICSYNC</td><td class="py-2 px-3 font-mono text-[#455A64]">KLI200622TM4</td><td class="py-2 px-3 text-[#455A64]">SEPTIMA A1 325, LOCAL 11 PLANTA ALTA , COL SANTA GERTRUDIS COPO, MERIDA &bull; YUCATAN (CP 97305)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">PROMOTORA SN</td><td class="py-2 px-3 font-mono text-[#455A64]">PSN150213JP0</td><td class="py-2 px-3 text-[#455A64]">CORAS 3515 LOCAL 4, COL MONRAZ, GUADALAJARA &bull; JALISCO (CP 44670)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SERVICIOS DE ONCOLOGIA MEDICA INTEGRAL</td><td class="py-2 px-3 font-mono text-[#455A64]">SOM020726RU0</td><td class="py-2 px-3 text-[#455A64]">CALZADA SAN PEDRO 255 SUR, COL DEL VALLE,SAN PEDRO GARZA GARCÍA &bull; NUEVO LEON (CP 66220)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">THE AMERICAN BRITISH COWDRAY MEDICAL CENTER</td><td class="py-2 px-3 font-mono text-[#455A64]">ABC4107047I0</td><td class="py-2 px-3 text-[#455A64]">SUR 136 NUM EX 116, COL LAS AMERICAS, ÁLVARO OBREGÓN &bull; CIUDAD DE MÉXICO (CP 01120)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">CENTRO DE INVESTIGACION ONCOLOGICA DE SINALOA</td><td class="py-2 px-3 font-mono text-[#455A64]">CIO1408142Q0</td><td class="py-2 px-3 text-[#455A64]">JUAN ESCUTIA 1680 NO EXT 01, COL CHAPULTEPEC, CULIACÁN &bull; SINALOA (CP 80040)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SERVICIOS DE SALUD DE CHIHUAHUA</td><td class="py-2 px-3 font-mono text-[#455A64]">SSC971029MU9</td><td class="py-2 px-3 text-[#455A64]">TERCERA 604, COL CHIHUAHUA CENTRO, CHIHUAHUA &bull; CHIHUAHUA (CP 31000)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">UNIVERSIDAD DE GUANAJUATO</td><td class="py-2 px-3 font-mono text-[#455A64]">UGU450325KY2</td><td class="py-2 px-3 text-[#455A64]">LASCURAINDERETANA 5, COL GUANAJUATO CENTRO, GUANAJUATO &bull; GUANAJUATO (CP 36000)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SERVICIOS DE SALUD DE SINALOA</td><td class="py-2 px-3 font-mono text-[#455A64]">SSS9610231Y3</td><td class="py-2 px-3 text-[#455A64]">CERRO MONTEBELLO ORIENTE 150, COL MONTEBELLO, CULIACÁN &bull; SINALOA (CP 80227)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">UNIVERSIDAD NACIONAL AUTONOMA DE MEXICO</td><td class="py-2 px-3 font-mono text-[#455A64]">UNA2907227Y5</td><td class="py-2 px-3 text-[#455A64]">AVENIDA UNIVERSIDAD 3000, COL UNIVERSIDAD NACIONAL AUTONOMA DE MEXICO C U , COYOACAN &bull; CIUDAD DE MÉXICO (CP 04510)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">ADMINISTRACION DE LA BENEFICENCIA PUBLICA DEL ESTADO DE SINALOA</td><td class="py-2 px-3 font-mono text-[#455A64]">ABP951025829</td><td class="py-2 px-3 text-[#455A64]">INSURGENTE SN, COL CENTRO SINALOA, CULIACÁN &bull; SINALOA (CP 80000)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">MUNICIPIO DE MAZATLAN</td><td class="py-2 px-3 font-mono text-[#455A64]">MMA810101BN9</td><td class="py-2 px-3 text-[#455A64]">ÁNGEL FLORES SN, COL MAZATLAN CENTRO, MAZATLÁN &bull; SINALOA (CP 82000)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">CENTRO DE ENDOCRINOLOGIA INTEGRAL</td><td class="py-2 px-3 font-mono text-[#455A64]">CEI260312TE3</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MÉXICO (CP 14050)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#AC0340] font-bold">105.01.01</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 45 Proveedores -->
+      <div class="bg-[#FFFFFF] p-5 rounded border border-[#E0E0E0] space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-[#282C2F] font-heading">45 Proveedores dados de alta / actualizados (CLIENTES_PROVEEDORES.xlsx)</h3>
+            <p class="text-xs text-[#455A64]">Todos vinculados a la cuenta única por pagar <span class="font-mono font-bold text-[#455A64]">201.01.01 Proveedores nacionales</span>.</p>
+          </div>
+          <input type="text" id="search-prov" onkeyup="filterTable('search-prov', 'table-prov')" placeholder="Filtrar proveedor por nombre o RFC..." class="px-3 py-1.5 border border-[#B3B3B3] rounded text-xs focus:outline-none focus:border-[#AC0340] w-64 text-[#282C2F]">
+        </div>
+        <div class="overflow-x-auto max-h-[450px] overflow-y-auto">
+          <table id="table-prov" class="min-w-full divide-y divide-[#E0E0E0] text-xs">
+            <thead class="bg-[#F5F5F5] text-[#455A64] font-bold uppercase sticky top-0">
+              <tr>
+                <th class="py-2 px-3 text-left">Razón Social</th>
+                <th class="py-2 px-3 text-left">RFC</th>
+                <th class="py-2 px-3 text-left">Domicilio / Ciudad / CP</th>
+                <th class="py-2 px-3 text-left">Régimen Fiscal SAT</th>
+                <th class="py-2 px-3 text-left">Cuenta CxP</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E0E0E0]">
+              <tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">ADMINISTRADORA CITI</td><td class="py-2 px-3 font-mono text-[#455A64]">ACI070313HD8</td><td class="py-2 px-3 text-[#455A64]">LUIS G. INCLÁN 2811/1, VILLA DE CORTÉS, BENITO JUÁREZ, C.P. 03530, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 03530)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">CONDOMINIO WORLD TRADE CENTER CIUDAD DE MEXICO</td><td class="py-2 px-3 font-mono text-[#455A64]">CWT021014H2A</td><td class="py-2 px-3 text-[#455A64]">MONTECITO 38, COL. NÁPOLES, C.P. 03810, BENITO JUÁREZ, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 03810)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">DOLIFORM SERVICIOS</td><td class="py-2 px-3 font-mono text-[#455A64]">DSE161027U82</td><td class="py-2 px-3 text-[#455A64]">MONTECITO 38, PISO 24 OF 12  COL. NÁPOLES,  BENITO JUÁREZ, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 03810)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">DHL EXPRESS MEXICO</td><td class="py-2 px-3 font-mono text-[#455A64]">DEM8801152E9</td><td class="py-2 px-3 text-[#455A64]">AV. FUERZA AEREA MEXICANA 540 COL. FEDERAL LOC. VENUSTIANO CARRANZA VENUSTIANO CARRANZA, CIUDAD DE MEXICO &bull; CIUDAD DE MEXICO (CP 15700)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">FEDERAL EXPRESS HOLDINGS (MEXICO) Y COMPAÑIA</td><td class="py-2 px-3 font-mono text-[#455A64]">FEH940630UG2</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP 05210)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">AXTEL</td><td class="py-2 px-3 font-mono text-[#455A64]">AXT940727FP8</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP 66450)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">RADIOMOVIL DIPSA</td><td class="py-2 px-3 font-mono text-[#455A64]">RDI841003QJ4</td><td class="py-2 px-3 text-[#455A64]">LAGO ZURICH, NO.245 EDIF. TELCEL, COL. AMPLIACIÓN GRANADA,  ALC. MIGUEL HIDALGO, CIUDAD DE MÉXICO &bull; CIUDAD DE MEXICO (CP 11529)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">DAVID MOLINA AMAR</td><td class="py-2 px-3 font-mono text-[#455A64]">MOAD7606078V0</td><td class="py-2 px-3 text-[#455A64]">VICTOR HUGO 202, COL PORTALES NORTE, BENITO JUAREZ &bull; CIUDAD DE MEXICO (CP 03303)</td><td class="py-2 px-3 text-[#282C2F]">612 - Personas Físicas con Actividades Empresariales y Profesionales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">MARIA ANGELICA SUAREZ RUIZ</td><td class="py-2 px-3 font-mono text-[#455A64]">SURA530321JS2</td><td class="py-2 px-3 text-[#455A64]">MONTECITO NO. EXTERIOR: 38 NO. INTERIOR: 12-33, COLONIA: NÁPOLES,, BENITO JUÁREZ, CIUDAD DE MÉXICO, PAÍS: MÉXICO REFERENCIA: WTC, &bull; CIUDAD DE MEXICO (CP 03810)</td><td class="py-2 px-3 text-[#282C2F]">606 - Arrendamiento</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">LALO EXPRESS VIP</td><td class="py-2 px-3 font-mono text-[#455A64]">LEV211117UA5</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP 03300)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">KONTOR NET AMERICA</td><td class="py-2 px-3 font-mono text-[#455A64]">KNA170925T31</td><td class="py-2 px-3 text-[#455A64]">CALLE: HERIBERTO FRIAS NO. 1439 INT: 404, COL. DEL VALLE CENTRO, BENITO JUAREZ, CIUDAD DE MEXICO, MEXICO &bull; NUEVO LEON (CP 03100)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">PATOLOGOS ASOCIADOS DEL PEDREGAL</td><td class="py-2 px-3 font-mono text-[#455A64]">PAP180828LS5</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP 04730)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SAMIA GONZALEZ VILLAGOMEZ</td><td class="py-2 px-3 font-mono text-[#455A64]">GOVS760311JT3</td><td class="py-2 px-3 text-[#455A64]">VASCO DE QUIROGA 1329 702D CUEVITAS, , ÁLVARO OBREGÓN, CIUDAD DE MEXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 01220)</td><td class="py-2 px-3 text-[#282C2F]">612 - Personas Físicas con Actividades Empresariales y Profesionales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">FUCAM</td><td class="py-2 px-3 font-mono text-[#455A64]">FUC000126KW5</td><td class="py-2 px-3 text-[#455A64]">AV. BORDO NO. 100, COL. EJIDO VIEJO DE SANTA URSULA COAPA,  COYOACAN, CIUDAD DE MEXICO, MEXICO &bull; CIUDAD DE MEXICO (CP 04980)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">BEBIDAS PURIFICADAS</td><td class="py-2 px-3 font-mono text-[#455A64]">BPU7901018D4</td><td class="py-2 px-3 text-[#455A64]">AVENIDA SANTA FE 428 TORRE III PISO 14 SANTA FE CUAJIMALPA CUAJIMALPA DE MORELOS CIUDAD DE MÉXICO MEXICO &bull; CIUDAD DE MEXICO (CP 05348)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">QUEST DIAGNOSTICS MEXICO</td><td class="py-2 px-3 font-mono text-[#455A64]">QDM521124S17</td><td class="py-2 px-3 text-[#455A64]">MONTECITO, 38, PISO 9, OFICINAS 18 Y 35 A 38, NÁPOLES, BENITO JUÁREZ, CIUDAD DE MÉXICO, MÉXICO, &bull; CIUDAD DE MEXICO (CP 03810)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">REGUMED</td><td class="py-2 px-3 font-mono text-[#455A64]">REG191125BK3</td><td class="py-2 px-3 text-[#455A64]">ZACATEPEC N° EXT.34 COL.PARAJE ZACATEPEC IZTAPALAPA,CIUDAD &bull; CIUDAD DE MEXICO (CP 09560)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">DANIEL BARCENAS RAMIREZ</td><td class="py-2 px-3 font-mono text-[#455A64]">BARD790622IZ7</td><td class="py-2 px-3 text-[#455A64]">CALLE: GRAL PEDRO HINOJOSA NO. EXTERIOR: 63 NO. INTERIOR: 3, COLONIA: DANIEL GARZA, MIGUEL HIDALGO, CIUDAD DE MÉXICO, PAÍS: MÉXICO &bull; CIUDAD DE MEXICO (CP 11830)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">BIOGENICA, LABORATORIOS CLINICOS</td><td class="py-2 px-3 font-mono text-[#455A64]">BLC170316E98</td><td class="py-2 px-3 text-[#455A64]">MANUEL MESTRE NO. 147, COL. NUEVA VILLAHERMOSA,CENTRO, TABASCO, MÉXICO &bull; TABASCO (CP 86070)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">DANNA SOFIA RAMOS ZEPEDA</td><td class="py-2 px-3 font-mono text-[#455A64]">RAZD000325DA5</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">612 - Personas Físicas con Actividades Empresariales y Profesionales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">ALEJANDRA MORA MENDOZA</td><td class="py-2 px-3 font-mono text-[#455A64]">MOMA600403AH7</td><td class="py-2 px-3 text-[#455A64]">LAGO BELGRANO, NO. 20 AMPLIACIÓN GRANADA,  MIGUEL HIDALGO, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 11529)</td><td class="py-2 px-3 text-[#282C2F]">612 - Personas Físicas con Actividades Empresariales y Profesionales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">AZTEC MEDIC</td><td class="py-2 px-3 font-mono text-[#455A64]">AME181017JV4</td><td class="py-2 px-3 text-[#455A64]">ADOLFO RUIZ CORTINES 2996 COLONIA BUROCRATAS DEL ESTADO MONTERREY, NL MÉXICO &bull; MONTERREY (CP 64380)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SILVIA DAMIAN HEREDIA</td><td class="py-2 px-3 font-mono text-[#455A64]">DAHS6602272T6</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">PEDRO GOMEZ ROMERO</td><td class="py-2 px-3 font-mono text-[#455A64]">GORP8910112A3</td><td class="py-2 px-3 text-[#455A64]">IZTACALCO, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 08500)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">RED DE LABORATORIOS NACIONALES</td><td class="py-2 px-3 font-mono text-[#455A64]">RLN061004SV7</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">TECH BUKERS</td><td class="py-2 px-3 font-mono text-[#455A64]">TBU210421JV6</td><td class="py-2 px-3 text-[#455A64]">EJERCITO NACIONAL MEXICANO, 350, INT. PISO 5B COL. POLANCO V SECCION, CIUDAD DE MÉXICO,  MIGUEL HIDALGO, CIUDAD DE MÉXICO, MEXICO &bull; CIUDAD DE MEXICO (CP 11560)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">JUAN RAMON GARCIA TIRADO</td><td class="py-2 px-3 font-mono text-[#455A64]">GATJ611217ELA</td><td class="py-2 px-3 text-[#455A64]">RÍO AMECA NO. 1375, COLONIA LOS PINOS, , CULIACÁN, SINALOA. &bull; SINALOA (CP 80128)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">RAUL ERNESTO VALDEZ OLIVAS</td><td class="py-2 px-3 font-mono text-[#455A64]">VAOR600301D12</td><td class="py-2 px-3 text-[#455A64]">AV PEDRO ZULOAGA 11400 INTERIOR  101 COLONIA VERANDAH RESIDENCIAL, CHIHUAHUA &bull; CHIHUAHUA (CP 31207)</td><td class="py-2 px-3 text-[#282C2F]">612 - Personas Físicas con Actividades Empresariales y Profesionales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">FERNANDO LARIOS VILLALOBOS</td><td class="py-2 px-3 font-mono text-[#455A64]">LAVF650106CXA</td><td class="py-2 px-3 text-[#455A64]">CALLE CATALUÑA 533, COLONIA MOLINO DEL REY, MUNICIPIO DE GUADALUPE, ESTADO DE NUEVO LEÓN, C.P. &bull; NUEVO LEON (CP 67192)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">JESUS EDUARDO AMEZCUA GALVEZ</td><td class="py-2 px-3 font-mono text-[#455A64]">AEGJ8909139D3</td><td class="py-2 px-3 text-[#455A64]">DAVID FRANCO RODRIGUEZ N° EXT.195 COL.J. TRINIDAD BARRAGAN,SAHUAYO,MICHOACAN,MÉXICO &bull; JALISCO (CP CP.59020)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SERVICIO DE ADMINISTRACION TRIBUTARIA</td><td class="py-2 px-3 font-mono text-[#455A64]">SAT970701NN3</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">INSTITUTO MEXICANO DEL SEGURO SOCIAL</td><td class="py-2 px-3 font-mono text-[#455A64]">IMS421231I45</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">BBVA MEXICO, S.A., INSTITUCION DE BANCA MULTIPLE, GRUPO FINANCIERO BBVA MEXICO</td><td class="py-2 px-3 font-mono text-[#455A64]">BBA830831LJ2</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">OPENPAY</td><td class="py-2 px-3 font-mono text-[#455A64]">OPE130906HN4</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">AMERICAN EXPRESS COMPANY MEXICO</td><td class="py-2 px-3 font-mono text-[#455A64]">AEC810901298</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">THE AMERICAN BRITISH COWDRAY MEDICAL CENTER</td><td class="py-2 px-3 font-mono text-[#455A64]">ABC4107047I0</td><td class="py-2 px-3 text-[#455A64]">SUR 136 NO. 116 COL. LAS AMERICAS ALC. ALVARO OBREGON, MEX CIUDAD DE MÉXICO &bull; CIUDAD DE MEXICO (CP 01120)</td><td class="py-2 px-3 text-[#282C2F]">603 - Personas Morales con Fines no Lucrativos</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">EDENRED MEXICO FINTECH</td><td class="py-2 px-3 font-mono text-[#455A64]">EMF210820KE8</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP —)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">MARIA DEL SOCORRO VILLAGOMEZ DUARTE</td><td class="py-2 px-3 font-mono text-[#455A64]">VIDS6204035T8</td><td class="py-2 px-3 text-[#455A64]">AVENIDA VASCO DE QUIROGA CAMINO REAL A TOLUCA NÚMERO 1150, INTERIOR 110-101, UNIDAD HABITACIONAL BELÉN, ALCALDÍA ÁLVARO OBREGÓN, &bull; CIUDAD DE MEXICO (CP 01209)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SERVICIOS MEDICOS Y DE LABORATORIO DEL SURESTE</td><td class="py-2 px-3 font-mono text-[#455A64]">SML141002HV0</td><td class="py-2 px-3 text-[#455A64]">— &bull; CIUDAD DE MEXICO (CP 97130)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SOCIEDAD MEXICANA DE NUTRICION Y ENDOCRINOLOGIA</td><td class="py-2 px-3 font-mono text-[#455A64]">SMN6210268W5</td><td class="py-2 px-3 text-[#455A64]">OHIO, 27, EL ROSEDAL,CIUDAD DE MÉXICO, ENTRE AV. DE LAS ROSAS Y MAQ,COYOACÁN, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 04400)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">CELENE MARITZA PEÑA CAMPOS</td><td class="py-2 px-3 font-mono text-[#455A64]">PECC830326155</td><td class="py-2 px-3 text-[#455A64]">BENJAMIN FRANKLIN N° EXT.235 N° INT.PISO 2 INT 5 COL.HIPODROMO ,CUAUHTEMOC,CIUDAD DE MEXICO,MÉXICO &bull; CIUDAD DE MEXICO (CP 06100)</td><td class="py-2 px-3 text-[#282C2F]">626 - Régimen Simplificado de Confianza</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">PREVENTIVE CUSTOMER HEALTHCARE</td><td class="py-2 px-3 font-mono text-[#455A64]">PCH200311FH2</td><td class="py-2 px-3 text-[#455A64]">GENERAL JUAN CANO 87 INT.100, SAN MIGUEL CHAPULTEPEC II SECCIÓN, DEL. CIUDAD DE MÉXICO, MIGUEL HIDALGO, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 11850)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">PUBLISHER CONCEPTOS</td><td class="py-2 px-3 font-mono text-[#455A64]">PCO210722MY0</td><td class="py-2 px-3 text-[#455A64]">DOMICILIO: CALLE DEL MEDANO NO.7209 INT. FRACC. PRADOS DEL SOL LOCALIDAD MAZATLÁN &bull; CIUDAD DE MEXICO (CP 82124)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">AXA SEGUROS</td><td class="py-2 px-3 font-mono text-[#455A64]">ASE931116231</td><td class="py-2 px-3 text-[#455A64]">AV. FÉLIX CUEVAS 366 TLACOQUEMECATL,  BENITO JUÁREZ, CIUDAD DE MÉXICO, MÉXICO &bull; CIUDAD DE MEXICO (CP 03200)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr><tr class="hover:bg-[#F5F5F5]/60"><td class="py-2 px-3 font-semibold">SACI LOGISTICS</td><td class="py-2 px-3 font-mono text-[#455A64]">SLO0901193B3</td><td class="py-2 px-3 text-[#455A64]">RAMON Y CAJAL 18 COL. MODERNA BENITO JUAREZ CIUDAD DE MÉXICO CDMX, &bull; CIUDAD DE MEXICO (CP 03510)</td><td class="py-2 px-3 text-[#282C2F]">601 - General de Ley Personas Morales</td><td class="py-2 px-3 font-mono text-[#455A64] font-bold">201.01.01</td></tr>
             </tbody>
           </table>
         </div>
